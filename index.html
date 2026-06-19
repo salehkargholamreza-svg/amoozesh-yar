@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>آموزش‌یار | نسخه کامل</title>
+    <title>آموزش‌یار </title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -33,8 +33,6 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
-
-        /* ===== ثبت‌نام ===== */
         #registerPage {
             display: flex;
             flex-direction: column;
@@ -135,15 +133,12 @@
             color: #3b82f6;
             font-size: 1.2rem;
         }
-
-        /* ===== سایت اصلی ===== */
         #mainSite {
             display: none;
         }
         #mainSite.active {
             display: block;
         }
-
         .header {
             display: flex;
             align-items: center;
@@ -232,7 +227,6 @@
             background: #dc2626 !important;
             transform: translateY(-2px);
         }
-
         .nav-menu {
             display: flex;
             flex-wrap: wrap;
@@ -271,7 +265,6 @@
             color: white;
             box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
         }
-
         .content-section {
             background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(6px);
@@ -313,8 +306,6 @@
             color: #1e293b;
             margin-bottom: 16px;
         }
-
-        /* ===== دوره‌ها ===== */
         .course-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -356,8 +347,6 @@
             border-radius: 40px;
             display: inline-block;
         }
-
-        /* ===== بازی‌های ریاضی ===== */
         .math-game {
             background: #f1f5f9;
             border-radius: 28px;
@@ -438,8 +427,6 @@
             border-color: #f87171;
             color: #991b1b;
         }
-
-        /* ===== جدول ضرب ===== */
         #zarb-table {
             width: 100%;
             border-collapse: collapse;
@@ -482,8 +469,6 @@
             border-radius: 20px;
             margin: 16px 0 10px;
         }
-
-        /* ===== دفترچه ===== */
         .notebook-entry {
             background: white;
             border-radius: 28px;
@@ -515,8 +500,6 @@
             border-top: 1px solid #e2e8f0;
             padding-top: 12px;
         }
-
-        /* ===== پنل مدیریت ===== */
         .admin-panel {
             background: white;
             border-radius: 28px;
@@ -561,6 +544,22 @@
         .admin-panel .delete-user-btn:hover {
             background: #dc2626;
         }
+        .admin-panel .clear-all-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+        .admin-panel .clear-all-btn:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+        }
         .admin-stats {
             display: flex;
             flex-wrap: wrap;
@@ -578,7 +577,45 @@
             color: #3b82f6;
             font-size: 1.1rem;
         }
-
+        .admin-lock {
+            text-align: center;
+            padding: 20px;
+            background: #f1f5f9;
+            border-radius: 28px;
+            border: 1px solid #e2e8f0;
+        }
+        .admin-lock input {
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 2px solid #cbd5e1;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 1rem;
+            width: 200px;
+            text-align: center;
+        }
+        .admin-lock input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        .admin-lock button {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 50px;
+            background: #3b82f6;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 8px;
+            transition: 0.2s;
+        }
+        .admin-lock button:hover {
+            background: #2563eb;
+        }
+        .admin-lock .error {
+            color: #dc2626;
+            margin-top: 8px;
+            display: none;
+        }
         .footer {
             margin-top: 28px;
             text-align: center;
@@ -599,7 +636,6 @@
         .footer a:hover {
             text-decoration: underline;
         }
-
         @media (max-width: 700px) {
             .container {
                 padding: 18px 16px;
@@ -665,6 +701,9 @@
             .admin-panel td {
                 padding: 6px 8px;
             }
+            .admin-lock input {
+                width: 150px;
+            }
         }
         @media (max-width: 450px) {
             .nav-btn {
@@ -722,7 +761,7 @@
                     <div class="logo-icon">🧠</div>
                     <div class="logo-text">
                         <h1>آموزش‌یار</h1>
-                        <span>یادگیری خلاق با اسکرچ، ریاضی و جدول ضرب</span>
+                        <span>یادگیری خلاق با اسکرچ، ریاضی و جدول ضرب با امیرعلی</span>
                     </div>
                 </div>
                 <div class="header-actions">
@@ -752,9 +791,7 @@
                 <div class="page active" id="page-courses">
                     <h2><span>📚</span> دوره‌های آموزشی</h2>
                     <p>دوره‌های مختلف آموزشی را در زیر مشاهده کنید.</p>
-                    <div class="course-grid" id="courseGrid">
-                        <!-- توسط JS ساخته می‌شود -->
-                    </div>
+                    <div class="course-grid" id="courseGrid"></div>
                 </div>
 
                 <!-- ===== اسکرچ ===== -->
@@ -827,30 +864,9 @@
                 <!-- ===== مدیریت ===== -->
                 <div class="page" id="page-admin">
                     <h2><span>⚙️</span> پنل مدیریت</h2>
-                    <p>در این بخش می‌توانید کاربران را مدیریت کنید و آمار را مشاهده نمایید.</p>
-                    <div class="admin-panel">
-                        <h3>📊 آمار کاربران</h3>
-                        <div class="admin-stats" id="adminStats">
-                            <!-- توسط JS ساخته می‌شود -->
-                        </div>
-                        <h3>👥 لیست کاربران</h3>
-                        <div style="overflow-x:auto;">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>نام</th>
-                                        <th>نام‌خانوادگی</th>
-                                        <th>سن</th>
-                                        <th>تاریخ ثبت‌نام</th>
-                                        <th>عملیات</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="usersTableBody">
-                                    <!-- توسط JS ساخته می‌شود -->
-                                </tbody>
-                            </table>
-                        </div>
+                    <p>برای دسترسی به پنل مدیریت، رمز عبور را وارد کنید.</p>
+                    <div id="adminContent">
+                        <!-- توسط JS ساخته می‌شود -->
                     </div>
                 </div>
 
@@ -896,6 +912,7 @@
 
             const USERS_KEY = 'amoozeshYarUsers';
             const CURRENT_USER_KEY = 'amoozeshYarCurrentUser';
+            const ADMIN_KEY = 'amoozeshYarAdmin';
 
             function getUsers() {
                 try {
@@ -925,6 +942,14 @@
 
             function clearCurrentUser() {
                 localStorage.removeItem(CURRENT_USER_KEY);
+            }
+
+            function isAdmin() {
+                return localStorage.getItem(ADMIN_KEY) === 'true';
+            }
+
+            function setAdmin(status) {
+                localStorage.setItem(ADMIN_KEY, String(status));
             }
 
             // ============================================================
@@ -965,63 +990,148 @@
             }
 
             // ============================================================
-            // رندر مدیریت
+            // رندر مدیریت (با رمز)
             // ============================================================
 
             function renderAdmin() {
-                const users = getUsers();
-                const body = document.getElementById('usersTableBody');
-                const stats = document.getElementById('adminStats');
+                const container = document.getElementById('adminContent');
+                if (!container) return;
 
-                if (!body) return;
-
-                // آمار
-                const total = users.length;
-                stats.innerHTML = `
-                    <div class="stat-item">👥 کل کاربران: <strong>${total}</strong></div>
-                    <div class="stat-item">📅 امروز: <strong>${new Date().toLocaleDateString('fa-IR')}</strong></div>
-                `;
-
-                // لیست کاربران
-                if (users.length === 0) {
-                    body.innerHTML = `<tr><td colspan="6" style="padding:20px; color:#94a3b8;">هیچ کاربری ثبت‌نام نکرده است.</td></tr>`;
-                    return;
-                }
-
-                let html = '';
-                users.forEach((u, i) => {
-                    html += `
-                        <tr>
-                            <td>${i + 1}</td>
-                            <td>${u.name}</td>
-                            <td>${u.family}</td>
-                            <td>${u.age}</td>
-                            <td>${new Date(u.registerDate).toLocaleDateString('fa-IR')}</td>
-                            <td><button class="delete-user-btn" data-id="${u.id}">🗑️</button></td>
-                        </tr>
+                if (isAdmin()) {
+                    // نمایش پنل مدیریت
+                    const users = getUsers();
+                    let html = `
+                        <div class="admin-panel">
+                            <h3>📊 آمار کاربران</h3>
+                            <div class="admin-stats">
+                                <div class="stat-item">👥 کل کاربران: <strong>${users.length}</strong></div>
+                                <div class="stat-item">📅 امروز: <strong>${new Date().toLocaleDateString('fa-IR')}</strong></div>
+                            </div>
+                            <div style="margin: 16px 0;">
+                                <button class="clear-all-btn" id="clearAllUsersBtn">🗑️ حذف همه کاربران</button>
+                            </div>
+                            <h3>👥 لیست کاربران</h3>
+                            <div style="overflow-x:auto;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>نام</th>
+                                            <th>نام‌خانوادگی</th>
+                                            <th>سن</th>
+                                            <th>تاریخ ثبت‌نام</th>
+                                            <th>عملیات</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="usersTableBody">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="margin-top:16px;">
+                                <button class="admin-logout-btn" style="background:#64748b; color:white; border:none; padding:8px 20px; border-radius:40px; cursor:pointer; font-weight:600;">🚪 خروج از مدیریت</button>
+                            </div>
+                        </div>
                     `;
-                });
-                body.innerHTML = html;
+                    container.innerHTML = html;
 
-                // رویداد حذف
-                document.querySelectorAll('.delete-user-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const id = parseInt(this.dataset.id, 10);
-                        if (confirm('آیا مطمئن هستید؟')) {
-                            let usersList = getUsers();
-                            usersList = usersList.filter(u => u.id !== id);
-                            saveUsers(usersList);
-                            const current = getCurrentUser();
-                            if (current && current.id === id) {
-                                clearCurrentUser();
-                                location.reload();
-                            } else {
+                    // پر کردن لیست کاربران
+                    const body = document.getElementById('usersTableBody');
+                    if (body) {
+                        if (users.length === 0) {
+                            body.innerHTML =
+                                `<tr><td colspan="6" style="padding:20px; color:#94a3b8;">هیچ کاربری ثبت‌نام نکرده است.</td></tr>`;
+                        } else {
+                            let rows = '';
+                            users.forEach((u, i) => {
+                                rows += `
+                                    <tr>
+                                        <td>${i + 1}</td>
+                                        <td>${u.name}</td>
+                                        <td>${u.family}</td>
+                                        <td>${u.age}</td>
+                                        <td>${new Date(u.registerDate).toLocaleDateString('fa-IR')}</td>
+                                        <td><button class="delete-user-btn" data-id="${u.id}">🗑️</button></td>
+                                    </tr>
+                                `;
+                            });
+                            body.innerHTML = rows;
+
+                            // رویداد حذف کاربر
+                            document.querySelectorAll('.delete-user-btn').forEach(btn => {
+                                btn.addEventListener('click', function() {
+                                    const id = parseInt(this.dataset.id, 10);
+                                    if (confirm('⚠️ آیا مطمئن هستید که می‌خواهید این کاربر را حذف کنید؟')) {
+                                        let usersList = getUsers();
+                                        usersList = usersList.filter(u => u.id !== id);
+                                        saveUsers(usersList);
+                                        const current = getCurrentUser();
+                                        if (current && current.id === id) {
+                                            clearCurrentUser();
+                                            location.reload();
+                                        } else {
+                                            renderAdmin();
+                                            updateUserCount();
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    }
+
+                    // رویداد حذف همه
+                    document.getElementById('clearAllUsersBtn')?.addEventListener('click', function() {
+                        if (confirm('⚠️ آیا مطمئن هستید که می‌خواهید همه کاربران را حذف کنید؟ این عمل غیرقابل برگشت است!')) {
+                            if (confirm('❗ آخرین تأیید: همه کاربران پاک می‌شوند. مطمئنی؟')) {
+                                localStorage.removeItem(USERS_KEY);
+                                localStorage.removeItem(CURRENT_USER_KEY);
                                 renderAdmin();
                                 updateUserCount();
+                                alert('✅ همه کاربران با موفقیت حذف شدند.');
                             }
                         }
                     });
-                });
+
+                    // رویداد خروج از مدیریت
+                    document.querySelector('.admin-logout-btn')?.addEventListener('click', function() {
+                        setAdmin(false);
+                        renderAdmin();
+                    });
+
+                } else {
+                    // نمایش فرم ورود به مدیریت
+                    container.innerHTML = `
+                        <div class="admin-lock">
+                            <div style="font-size:3rem; margin-bottom:10px;">🔐</div>
+                            <h3 style="margin-bottom:12px;">ورود به پنل مدیریت</h3>
+                            <input type="password" id="adminPasswordInput" placeholder="رمز عبور را وارد کن..." />
+                            <button id="adminLoginBtn">✔️ ورود</button>
+                            <div class="error" id="adminLoginError">❌ رمز عبور اشتباه است!</div>
+                        </div>
+                    `;
+
+                    const passwordInput = document.getElementById('adminPasswordInput');
+                    const loginBtn = document.getElementById('adminLoginBtn');
+                    const errorEl = document.getElementById('adminLoginError');
+
+                    function checkAdminPassword() {
+                        const pass = passwordInput.value.trim();
+                        // رمز پیش‌فرض: admin123
+                        if (pass === 'admin123') {
+                            setAdmin(true);
+                            errorEl.style.display = 'none';
+                            renderAdmin();
+                        } else {
+                            errorEl.style.display = 'block';
+                            passwordInput.value = '';
+                            passwordInput.focus();
+                        }
+                    }
+
+                    loginBtn.addEventListener('click', checkAdminPassword);
+                    passwordInput.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter') checkAdminPassword();
+                    });
+                }
             }
 
             // ============================================================
@@ -1110,6 +1220,7 @@
 
             logoutBtn.addEventListener('click', function() {
                 clearCurrentUser();
+                setAdmin(false);
                 checkLogin();
             });
 
@@ -1146,7 +1257,13 @@
             navBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     const pageId = this.dataset.page;
-                    if (pageId) showPage(pageId);
+                    if (pageId) {
+                        showPage(pageId);
+                        // اگر صفحه مدیریت است، دوباره رندر کن
+                        if (pageId === 'admin') {
+                            renderAdmin();
+                        }
+                    }
                 });
             });
 
@@ -1273,8 +1390,9 @@
             // ============================================================
 
             checkLogin();
-            console.log('✅ آموزش‌یار کامل با موفقیت بارگذاری شد!');
+            console.log('✅ آموزش‌یار کامل با مدیریت رمزدار بارگذاری شد!');
             console.log('👥 تعداد کاربران:', getUsers().length);
+            console.log('🔑 رمز مدیریت: admin123');
         })();
     </script>
 
