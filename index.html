@@ -1014,6 +1014,19 @@
                     countEl.textContent = count;
                 }
 
+                document.getElementById('showUsersBtn')?.addEventListener('click', function() {
+    const users = getUsers();
+    if (users.length === 0) {
+        alert('❌ هنوز هیچ کاربری ثبت‌نام نکرده است.');
+        return;
+    }
+    let msg = '👥 لیست کاربران:\n\n';
+    users.forEach((u, i) => {
+        msg += `${i+1}. ${u.name} ${u.family} (${u.age} سال) - تاریخ: ${new Date(u.registerDate).toLocaleDateString('fa-IR')}\n`;
+    });
+    alert(msg);
+});
+                
                 // در هدر (بعد از ورود)
                 const headerCountEl = document.getElementById('headerUserCount');
                 if (headerCountEl) {
