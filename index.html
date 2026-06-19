@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>آموزش‌یار </title>
+    <title>آموزش‌یار | اسکرچ، جونیور، ریاضی، جدول ضرب و گالری</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -134,13 +134,13 @@
 
         .nav-btn {
             flex: 1 1 auto;
-            min-width: 100px;
-            padding: 12px 18px;
+            min-width: 80px;
+            padding: 12px 14px;
             border: none;
             border-radius: 50px;
             background: transparent;
             font-family: 'Vazirmatn', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: #334155;
             cursor: pointer;
@@ -148,7 +148,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .nav-btn:hover {
@@ -160,10 +160,6 @@
             background: #3b82f6;
             color: white;
             box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
-        }
-
-        .nav-btn i {
-            font-size: 1.2rem;
         }
 
         .content-section {
@@ -218,7 +214,6 @@
             margin-bottom: 16px;
         }
 
-        /* لیست دکمه‌های توضیحات */
         .page ul {
             list-style: none;
             padding: 0;
@@ -291,7 +286,6 @@
             margin: 6px 0 0;
         }
 
-        /* بازی‌های ریاضی */
         .math-game {
             background: #f1f5f9;
             border-radius: 28px;
@@ -382,7 +376,6 @@
             color: #991b1b;
         }
 
-        /* جدول ضرب */
         #zarb-table {
             width: 100%;
             border-collapse: collapse;
@@ -433,7 +426,134 @@
             margin: 16px 0 10px;
         }
 
-        /* ===== مودال آموزشی ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+            margin: 24px 0 18px;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            border: 1px solid #eef2f6;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+            border-color: #b9d0f0;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            background: #f1f5f9;
+        }
+
+        .gallery-item .gallery-caption {
+            padding: 14px 16px 18px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #0f172a;
+            text-align: center;
+            background: white;
+        }
+
+        .gallery-item .gallery-caption small {
+            display: block;
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 30px;
+            flex-direction: column;
+        }
+
+        .lightbox-overlay.show {
+            display: flex;
+        }
+
+        .lightbox-overlay .lightbox-close {
+            position: absolute;
+            top: 24px;
+            left: 30px;
+            font-size: 2.6rem;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: 0.2s;
+            line-height: 1;
+            opacity: 0.7;
+        }
+
+        .lightbox-overlay .lightbox-close:hover {
+            opacity: 1;
+            transform: rotate(90deg);
+        }
+
+        .lightbox-overlay .lightbox-img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            object-fit: contain;
+            background: #0f172a;
+        }
+
+        .lightbox-overlay .lightbox-caption {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 20px;
+            text-align: center;
+            padding: 8px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ===== استایل فرم تماس ===== */
+        #page-contact input,
+        #page-contact textarea {
+            transition: 0.2s;
+        }
+        #page-contact input:focus,
+        #page-contact textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+        }
+
+        /* ===== استایل دفترچه ===== */
+        #notebookDisplay {
+            transition: all 0.3s;
+        }
+        #notebookDisplay p {
+            margin-bottom: 8px;
+        }
+
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -569,9 +689,9 @@
                 justify-content: center;
             }
             .nav-btn {
-                min-width: 70px;
-                padding: 10px 12px;
-                font-size: 0.85rem;
+                min-width: 55px;
+                padding: 10px 8px;
+                font-size: 0.75rem;
             }
             .content-section {
                 padding: 20px 16px;
@@ -604,13 +724,29 @@
             .modal-box h3 {
                 font-size: 1.4rem;
             }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 16px;
+            }
+            .gallery-item img {
+                height: 150px;
+            }
+            .lightbox-overlay .lightbox-img {
+                max-width: 95%;
+                max-height: 70vh;
+            }
+            .lightbox-overlay .lightbox-close {
+                top: 16px;
+                left: 20px;
+                font-size: 2rem;
+            }
         }
 
         @media (max-width: 450px) {
             .nav-btn {
-                min-width: 55px;
-                font-size: 0.75rem;
-                padding: 8px 6px;
+                min-width: 45px;
+                font-size: 0.65rem;
+                padding: 8px 4px;
             }
             .logo-text h1 {
                 font-size: 1.4rem;
@@ -619,6 +755,17 @@
                 width: 48px;
                 height: 48px;
                 font-size: 2rem;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .gallery-item img {
+                height: 120px;
+            }
+            .gallery-item .gallery-caption {
+                font-size: 0.85rem;
+                padding: 10px 8px;
             }
         }
     </style>
@@ -632,7 +779,7 @@
                 <div class="logo-icon">🧠</div>
                 <div class="logo-text">
                     <h1>آموزش‌یار</h1>
-                    <span>یادگیری خلاق اسکرچ، ریاضی و جدول ضرب با امیرعلی</span>
+                    <span>یادگیری خلاق با اسکرچ، ریاضی و جدول ضرب</span>
                 </div>
             </div>
             <div class="header-actions">
@@ -643,14 +790,17 @@
 
         <nav class="nav-menu" id="navMenu">
             <button class="nav-btn active" data-page="scratch"><span>🟦</span> اسکرچ</button>
-            <button class="nav-btn" data-page="junior"><span>🧩</span> اسکرچ جونیور</button>
+            <button class="nav-btn" data-page="junior"><span>🧩</span> جونیور</button>
             <button class="nav-btn" data-page="math"><span>➕</span> ریاضی</button>
             <button class="nav-btn" data-page="zarb"><span>✖️</span> جدول ضرب</button>
+            <button class="nav-btn" data-page="gallery"><span>🖼️</span> گالری</button>
+            <button class="nav-btn" data-page="contact"><span>📞</span> ارتباط با ما</button>
+            <button class="nav-btn" data-page="notebook"><span>📓</span> دفترچه</button>
         </nav>
 
         <div class="content-section">
 
-            <!-- صفحه اسکرچ -->
+            <!-- ======================== صفحه اسکرچ ======================== -->
             <div class="page active" id="page-scratch">
                 <h2><span>🟦</span> آموزش اسکرچ</h2>
                 <p>
@@ -685,7 +835,7 @@
                 </p>
             </div>
 
-            <!-- صفحه اسکرچ جونیور -->
+            <!-- ======================== صفحه اسکرچ جونیور ======================== -->
             <div class="page" id="page-junior">
                 <h2><span>🧩</span> اسکرچ جونیور</h2>
                 <p>
@@ -719,7 +869,7 @@
                 </p>
             </div>
 
-            <!-- صفحه ریاضی -->
+            <!-- ======================== صفحه ریاضی ======================== -->
             <div class="page" id="page-math">
                 <h2><span>➕</span> ریاضی با بازی</h2>
                 <p>
@@ -747,7 +897,7 @@
                 </p>
             </div>
 
-            <!-- صفحه جدول ضرب -->
+            <!-- ======================== صفحه جدول ضرب ======================== -->
             <div class="page" id="page-zarb">
                 <h2><span>✖️</span> جدول ضرب</h2>
                 <p>
@@ -775,6 +925,99 @@
                 </p>
             </div>
 
+            <!-- ======================== صفحه گالری ======================== -->
+            <div class="page" id="page-gallery">
+                <h2><span>🖼️</span> گالری تصاویر آموزشی</h2>
+                <p>
+                    در این بخش تصاویری شاد و مرتبط با اسکرچ، ریاضی و خلاقیت کودکان را مشاهده می‌کنید. روی هر تصویر کلیک کنید تا آن را در اندازه‌ی بزرگ‌تر ببینید.
+                </p>
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- تصاویر توسط JS ساخته می‌شوند -->
+                </div>
+            </div>
+
+            <!-- ======================== صفحه ارتباط با ما ======================== -->
+            <div class="page" id="page-contact">
+                <h2><span>📞</span> ارتباط با ما</h2>
+                <p>
+                    اگر سوال، پیشنهاد یا ایده‌ای دارید، خوشحال می‌شیم از شما بشنویم.
+                    فرم زیر را پر کنید تا با شما در ارتباط باشیم.
+                </p>
+                <div style="background: #f1f5f9; border-radius: 28px; padding: 24px; margin: 22px 0 6px; border: 1px solid #e2e8f0;">
+                    <form id="contactForm" onsubmit="alert('✅ پیام شما با موفقیت ارسال شد! (نسخه‌ی نمایشی)'); return false;">
+                        <div style="margin-bottom: 16px;">
+                            <label style="display:block; font-weight:600; margin-bottom:6px;">نام و نام‌خانوادگی</label>
+                            <input type="text" placeholder="مثلاً علی رضایی" required
+                                   style="width:100%; padding:12px 16px; border-radius:50px; border:2px solid #cbd5e1; font-family:inherit; font-size:1rem;" />
+                        </div>
+                        <div style="margin-bottom: 16px;">
+                            <label style="display:block; font-weight:600; margin-bottom:6px;">ایمیل</label>
+                            <input type="email" placeholder="example@gmail.com" required
+                                   style="width:100%; padding:12px 16px; border-radius:50px; border:2px solid #cbd5e1; font-family:inherit; font-size:1rem;" />
+                        </div>
+                        <div style="margin-bottom: 16px;">
+                            <label style="display:block; font-weight:600; margin-bottom:6px;">پیام شما</label>
+                            <textarea rows="4" placeholder="متن پیام..." required
+                                      style="width:100%; padding:12px 16px; border-radius:24px; border:2px solid #cbd5e1; font-family:inherit; font-size:1rem; resize:vertical;"></textarea>
+                        </div>
+                        <button type="submit"
+                                style="background:#3b82f6; color:white; border:none; padding:12px 36px; border-radius:50px; font-size:1.1rem; font-weight:700; cursor:pointer; transition:0.2s; box-shadow:0 6px 14px rgba(59,130,246,0.25);">
+                            📨 ارسال پیام
+                        </button>
+                    </form>
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:20px; margin-top:20px; justify-content:center;">
+                    <div style="background:white; padding:16px 24px; border-radius:60px; border:1px solid #e2e8f0;">
+                        📧 info@amoozesh-yar.com
+                    </div>
+                    <div style="background:white; padding:16px 24px; border-radius:60px; border:1px solid #e2e8f0;">
+                        📞 ۰۲۱-۱۲۳۴-۵۶۷۸
+                    </div>
+                    <div style="background:white; padding:16px 24px; border-radius:60px; border:1px solid #e2e8f0;">
+                        📍 تهران، خیابان آموزش
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======================== صفحه دفترچه‌ی آزاد ======================== -->
+            <div class="page" id="page-notebook">
+                <h2><span>📓</span> دفترچه‌ی یادداشت</h2>
+                <p>
+                    این بخش مال خودته! هر چی دوست داری بنویس: ایده، یادداشت، شعر، کد، برنامه‌ریزی، یا هر چیز دیگه‌ای.
+                </p>
+
+                <div style="background: white; border-radius: 28px; padding: 24px; margin: 20px 0; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+
+                    <!-- نمایش محتوا (غیرقابل ویرایش) -->
+                    <div id="notebookDisplay" style="font-size:1.05rem; line-height:2; color:#1e293b; padding:12px; min-height:150px; border-radius:16px; background:#fafcff; border:1px dashed #cbd5e1;">
+                        <p style="color:#94a3b8;">✍️ چیزی بنویس...</p>
+                    </div>
+
+                    <!-- دکمه‌های ویرایش و ذخیره -->
+                    <div style="display:flex; gap:12px; margin-top:16px; flex-wrap:wrap;">
+                        <button id="editNotebookBtn" style="background:#3b82f6; color:white; border:none; padding:10px 24px; border-radius:50px; font-weight:600; cursor:pointer; transition:0.2s; box-shadow:0 4px 12px rgba(59,130,246,0.2);">
+                            ✏️ ویرایش
+                        </button>
+                        <button id="saveNotebookBtn" style="background:#22c55e; color:white; border:none; padding:10px 24px; border-radius:50px; font-weight:600; cursor:pointer; transition:0.2s; box-shadow:0 4px 12px rgba(34,197,94,0.2); display:none;">
+                            💾 ذخیره
+                        </button>
+                        <button id="cancelEditBtn" style="background:#e2e8f0; color:#1e293b; border:none; padding:10px 24px; border-radius:50px; font-weight:600; cursor:pointer; transition:0.2s; display:none;">
+                            ❌ انصراف
+                        </button>
+                    </div>
+
+                    <!-- ویرایشگر مخفی (که هنگام ویرایش نمایش داده می‌شود) -->
+                    <div id="notebookEditor" style="display:none; margin-top:16px;">
+                        <textarea id="notebookTextarea" rows="10" style="width:100%; padding:16px; border-radius:20px; border:2px solid #cbd5e1; font-family:'Vazirmatn',sans-serif; font-size:1rem; line-height:2; resize:vertical; background:#f8fafc;" placeholder="ایده‌ها، یادداشت‌ها، شعر، کد، یا هر چیزی که دوست داری..."></textarea>
+                        <p style="font-size:0.85rem; color:#64748b; margin-top:8px;">💡 محتوای شما به‌صورت خودکار در مرورگرتان ذخیره می‌شود.</p>
+                    </div>
+                </div>
+
+                <p style="font-size:0.95rem; color:#475569; margin-top:8px;">
+                    ⭐ این یک فضای کاملاً شخصی برای توست. هر بار که وارد این صفحه می‌شوی، نوشته‌های قبلی‌ات را می‌بینی.
+                </p>
+            </div>
+
         </div>
 
         <footer class="footer">
@@ -799,17 +1042,29 @@
         </div>
     </div>
 
+    <!-- ===== لایت‌باکس گالری ===== -->
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <button class="lightbox-close" id="lightboxClose">✕</button>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="تصویر بزرگ" />
+        <div class="lightbox-caption" id="lightboxCaption">عنوان تصویر</div>
+    </div>
+
     <script>
         (function() {
             'use strict';
 
-            // ----- مدیریت منو و نمایش صفحات -----
+            // ============================================================
+            // مدیریت منو و نمایش صفحات
+            // ============================================================
             const navBtns = document.querySelectorAll('.nav-btn');
             const pages = {
                 scratch: document.getElementById('page-scratch'),
                 junior: document.getElementById('page-junior'),
                 math: document.getElementById('page-math'),
-                zarb: document.getElementById('page-zarb')
+                zarb: document.getElementById('page-zarb'),
+                gallery: document.getElementById('page-gallery'),
+                contact: document.getElementById('page-contact'),
+                notebook: document.getElementById('page-notebook')
             };
 
             function showPage(pageId) {
@@ -834,7 +1089,9 @@
                 });
             });
 
-            // ----- ساخت جدول ضرب -----
+            // ============================================================
+            // جدول ضرب
+            // ============================================================
             function buildZarbTable() {
                 const table = document.getElementById('zarb-table');
                 if (!table) return;
@@ -855,7 +1112,9 @@
             }
             buildZarbTable();
 
-            // ----- بازی ریاضی (جمع) -----
+            // ============================================================
+            // بازی جمع
+            // ============================================================
             const questionEl = document.getElementById('mathQuestion');
             const answerInput = document.getElementById('mathAnswer');
             const checkBtn = document.getElementById('mathCheckBtn');
@@ -899,7 +1158,9 @@
                 if (e.key === 'Enter') checkBtn.click();
             });
 
-            // ----- بازی ضرب -----
+            // ============================================================
+            // بازی ضرب
+            // ============================================================
             const zarbQuestion = document.getElementById('zarbQuestion');
             const zarbAnswer = document.getElementById('zarbAnswer');
             const zarbCheckBtn = document.getElementById('zarbCheckBtn');
@@ -943,7 +1204,9 @@
                 if (e.key === 'Enter') zarbCheckBtn.click();
             });
 
-            // ----- فوکوس خودکار در صفحات -----
+            // ============================================================
+            // فوکوس خودکار
+            // ============================================================
             const mathPage = document.getElementById('page-math');
             const zarbPage = document.getElementById('page-zarb');
 
@@ -969,12 +1232,106 @@
             document.querySelector('.nav-btn[data-page="zarb"]')?.addEventListener('click', focusZarb);
 
             // ============================================================
-            // ===== سیستم مودال آموزشی برای دکمه‌های توضیحات =====
+            // گالری تصاویر
             // ============================================================
+            const galleryData = [{
+                id: 1,
+                title: 'برنامه‌نویسی با اسکرچ',
+                desc: 'محیط بصری و خلاقانه',
+                img: 'https://picsum.photos/seed/scratch1/600/400',
+                alt: 'اسکرچ محیط برنامه‌نویسی'
+            }, {
+                id: 2,
+                title: 'اسکرچ جونیور برای کودکان',
+                desc: 'یادگیری آسان با تصاویر',
+                img: 'https://picsum.photos/seed/junior1/600/400',
+                alt: 'اسکرچ جونیور'
+            }, {
+                id: 3,
+                title: 'بازی و ریاضی',
+                desc: 'آموزش اعداد با سرگرمی',
+                img: 'https://picsum.photos/seed/math1/600/400',
+                alt: 'ریاضی با بازی'
+            }, {
+                id: 4,
+                title: 'تمرین جدول ضرب',
+                desc: 'یادگیری ضرب با تصویر',
+                img: 'https://picsum.photos/seed/zarb1/600/400',
+                alt: 'جدول ضرب'
+            }, {
+                id: 5,
+                title: 'ساخت بازی خلاقانه',
+                desc: 'ایده‌های جدید برای کودکان',
+                img: 'https://picsum.photos/seed/scratch2/600/400',
+                alt: 'ساخت بازی با اسکرچ'
+            }, {
+                id: 6,
+                title: 'نقاشی و انیمیشن',
+                desc: 'خلاقیت با اسکرچ جونیور',
+                img: 'https://picsum.photos/seed/junior2/600/400',
+                alt: 'خلاقیت جونیور'
+            }];
 
-            // دیکشنری توضیحات بر اساس متن عنوان (برای آیتم‌های لیست و کارت‌ها)
+            const galleryGrid = document.getElementById('galleryGrid');
+            if (galleryGrid) {
+                galleryData.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'gallery-item';
+                    div.dataset.id = item.id;
+                    div.innerHTML = `
+                        <img src="${item.img}" alt="${item.alt}" loading="lazy" />
+                        <div class="gallery-caption">
+                            ${item.title}
+                            <small>${item.desc}</small>
+                        </div>
+                    `;
+                    galleryGrid.appendChild(div);
+                });
+            }
+
+            // ============================================================
+            // لایت‌باکس
+            // ============================================================
+            const lightboxOverlay = document.getElementById('lightboxOverlay');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const lightboxClose = document.getElementById('lightboxClose');
+
+            function openLightbox(imgSrc, caption) {
+                lightboxImg.src = imgSrc;
+                lightboxImg.alt = caption || 'تصویر';
+                lightboxCaption.textContent = caption || '';
+                lightboxOverlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                lightboxOverlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    const img = this.querySelector('img');
+                    const cap = this.querySelector('.gallery-caption')?.textContent?.trim() || '';
+                    if (img) {
+                        openLightbox(img.src, cap);
+                    }
+                });
+            });
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxOverlay.addEventListener('click', function(e) {
+                if (e.target === this) closeLightbox();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeLightbox();
+            });
+
+            // ============================================================
+            // مودال آموزشی
+            // ============================================================
             const infoData = {
-                // ---- اسکرچ ----
                 '🧩 بلوک‌های حرکتی': {
                     title: '🧩 بلوک‌های حرکتی',
                     desc: 'این بلوک‌ها برای جابه‌جایی و چرخش اسپرایت‌ها در صحنه استفاده می‌شوند. با آن‌ها می‌توانید مسیرهای مختلفی برای شخصیت‌های خود طراحی کنید، مثلاً حرکت به جلو، عقب، چرخش به چپ یا راست و پریدن به مکان خاص.'
@@ -1007,7 +1364,6 @@
                     title: '🎨 طراحی کاراکتر',
                     desc: 'با ویرایشگر نقاشی اسکرچ، می‌توانید اسپرایت‌ها و پس‌زمینه‌های خود را از صفر طراحی کنید. ابزارهای نقاشی، رنگ‌آمیزی و انتخاب شکل به شما کمک می‌کنند تا شخصیت‌های منحصربه‌فرد بسازید.'
                 },
-                // ---- اسکرچ جونیور ----
                 '🎨 رابط کاربری کاملاً تصویری': {
                     title: '🎨 رابط کاربری کاملاً تصویری',
                     desc: 'همه‌چیز در اسکرچ جونیور با آیکون‌های رنگی و بدون متن طراحی شده تا کودکان پیش‌دبستانی به راحتی از آن استفاده کنند. هیچ نیازی به خواندن متن نیست و همه چیز با تصویر و نماد قابل درک است.'
@@ -1036,7 +1392,6 @@
                     title: '📚 داستان‌های کوتاه',
                     desc: 'با تغییر صحنه‌ها و نمایش دیالوگ‌های تصویری، کودکان می‌توانند داستان‌های ساده اما جذاب بسازند. این کار به درک توالی رویدادها و علت و معلول کمک می‌کند.'
                 },
-                // ---- ریاضی ----
                 '🧮 جمع و تفریق': {
                     title: '🧮 جمع و تفریق',
                     desc: 'مفاهیم پایه‌ای جمع و تفریق با استفاده از اشیاء و تصاویر به کودکان آموزش داده می‌شود. تمرین‌های تعاملی به درک بهتر این عملیات کمک می‌کند.'
@@ -1055,21 +1410,17 @@
                 }
             };
 
-            // تابع نمایش مودال
             function showModal(title, description) {
                 const modal = document.getElementById('infoModal');
                 const titleEl = document.getElementById('modalTitle');
                 const bodyEl = document.getElementById('modalBody');
                 if (!modal || !titleEl || !bodyEl) return;
-
                 titleEl.textContent = title || 'آموزش';
-                // اگر توضیحات شامل HTML بود، از innerHTML استفاده می‌کنیم
                 bodyEl.innerHTML = `<p>${description || 'توضیحاتی برای این مورد موجود نیست.'}</p>`;
                 modal.classList.add('show');
                 document.body.style.overflow = 'hidden';
             }
 
-            // بستن مودال
             function closeModal() {
                 const modal = document.getElementById('infoModal');
                 if (modal) {
@@ -1078,7 +1429,6 @@
                 }
             }
 
-            // رویدادهای بستن مودال
             document.getElementById('modalCloseBtn')?.addEventListener('click', closeModal);
             document.getElementById('infoModal')?.addEventListener('click', function(e) {
                 if (e.target === this) closeModal();
@@ -1087,22 +1437,16 @@
                 if (e.key === 'Escape') closeModal();
             });
 
-            // ----- اضافه کردن کلیک به همه آیتم‌های لیست و کارت‌ها -----
-            // تمام liهای داخل ulهای صفحه (به جز ulهای داخل مودال)
             const allListItems = document.querySelectorAll('.page ul li');
             const allCards = document.querySelectorAll('.card-item');
 
             function handleInfoClick(e) {
                 const el = e.currentTarget;
-                // تلاش برای یافتن عنوان: ابتدا از textContent استفاده می‌کنیم
                 let rawText = el.textContent.trim();
-                // حذف اعداد و کاراکترهای اضافی (برای آیتم‌های لیست ممکن است شامل ایموجی باشد)
-                // اما بهتر است کل متن را به عنوان کلید استفاده کنیم
                 const key = rawText;
                 if (infoData[key]) {
                     showModal(infoData[key].title, infoData[key].desc);
                 } else {
-                    // اگر کلید پیدا نشد، از عنوان داخل کارت استفاده می‌کنیم
                     const titleEl = el.querySelector('h4');
                     if (titleEl) {
                         const cardKey = titleEl.textContent.trim();
@@ -1111,26 +1455,117 @@
                             return;
                         }
                     }
-                    // در غیر این صورت یک پیام عمومی
                     showModal('آموزش', `برای "${rawText}" توضیحاتی ثبت نشده است، اما می‌توانید از منابع دیگر کمک بگیرید.`);
                 }
             }
 
             allListItems.forEach(item => {
                 item.addEventListener('click', handleInfoClick);
-                // نشانگر کلیک‌پذیری
                 item.style.cursor = 'pointer';
             });
-
             allCards.forEach(card => {
                 card.addEventListener('click', handleInfoClick);
                 card.style.cursor = 'pointer';
             });
 
-            // همچنین برای آیتم‌های موجود در صفحه جدول ضرب (کارت‌ها وجود ندارند، اما لیست هم نداریم)
-            // ولی ممکن است در آینده اضافه شوند، بنابراین همین کافی است.
+            // ============================================================
+            // 📓 دفترچه‌ی آزاد (Notebook)
+            // ============================================================
+            const notebookKey = 'amoozeshYarNotebook';
+            const displayEl = document.getElementById('notebookDisplay');
+            const editorEl = document.getElementById('notebookEditor');
+            const textareaEl = document.getElementById('notebookTextarea');
+            const editBtn = document.getElementById('editNotebookBtn');
+            const saveBtn = document.getElementById('saveNotebookBtn');
+            const cancelBtn = document.getElementById('cancelEditBtn');
 
-            console.log('✅ آموزش‌یار با مودال آموزشی بارگذاری شد!');
+            // بارگذاری محتوای ذخیره‌شده
+            function loadNotebook() {
+                const saved = localStorage.getItem(notebookKey);
+                if (saved) {
+                    displayEl.innerHTML = saved;
+                    textareaEl.value = saved;
+                } else {
+                    displayEl.innerHTML = '<p style="color:#94a3b8;">✍️ چیزی بنویس... (روی دکمه‌ی ویرایش کلیک کن)</p>';
+                    textareaEl.value = '';
+                }
+            }
+
+            // ذخیره‌سازی
+            function saveNotebook() {
+                const content = textareaEl.value;
+                if (content.trim() === '') {
+                    displayEl.innerHTML = '<p style="color:#94a3b8;">✍️ چیزی بنویس... (روی دکمه‌ی ویرایش کلیک کن)</p>';
+                    localStorage.removeItem(notebookKey);
+                } else {
+                    const displayContent = content.replace(/\n/g, '<br>');
+                    displayEl.innerHTML = displayContent;
+                    localStorage.setItem(notebookKey, displayContent);
+                }
+                exitEditMode();
+            }
+
+            // ورود به حالت ویرایش
+            function enterEditMode() {
+                displayEl.style.display = 'none';
+                editorEl.style.display = 'block';
+                editBtn.style.display = 'none';
+                saveBtn.style.display = 'inline-block';
+                cancelBtn.style.display = 'inline-block';
+                textareaEl.focus();
+                const currentText = displayEl.textContent || '';
+                textareaEl.value = currentText;
+            }
+
+            // خروج از حالت ویرایش (بدون ذخیره)
+            function exitEditMode() {
+                displayEl.style.display = 'block';
+                editorEl.style.display = 'none';
+                editBtn.style.display = 'inline-block';
+                saveBtn.style.display = 'none';
+                cancelBtn.style.display = 'none';
+            }
+
+            // رویدادها
+            editBtn.addEventListener('click', enterEditMode);
+            saveBtn.addEventListener('click', saveNotebook);
+            cancelBtn.addEventListener('click', function() {
+                const saved = localStorage.getItem(notebookKey);
+                if (saved) {
+                    textareaEl.value = saved;
+                } else {
+                    textareaEl.value = '';
+                }
+                exitEditMode();
+            });
+
+            // ذخیره با Ctrl+Enter
+            textareaEl.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.key === 'Enter') {
+                    e.preventDefault();
+                    saveNotebook();
+                }
+            });
+
+            // بارگذاری اولیه
+            loadNotebook();
+
+            // وقتی صفحه نمایش داده شد، محتوا رو لود کن
+            const notebookPage = document.getElementById('page-notebook');
+            if (notebookPage) {
+                const observerNotebook = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                            if (notebookPage.classList.contains('active')) {
+                                loadNotebook();
+                            }
+                        }
+                    });
+                });
+                observerNotebook.observe(notebookPage, { attributes: true });
+            }
+
+            console.log('✅ آموزش‌یار با دفترچه‌ی آزاد بارگذاری شد!');
         })();
     </script>
 
