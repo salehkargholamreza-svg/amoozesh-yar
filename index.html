@@ -906,6 +906,9 @@
                     <span id="userCountHeader" style="background:#e2e8f0; padding:6px 16px; border-radius:40px; font-size:0.85rem; font-weight:600; color:#1e293b; cursor:default;" title="دابل‌کلیک = مدیریت کاربران">
                         👥 <span id="headerUserCount">۰</span>
                     </span>
+                    <button id="adminAccessBtn" style="background:#8b5cf6; color:white; border:none; padding:8px 18px; border-radius:40px; font-size:0.85rem; font-weight:600; cursor:pointer;">
+    🔑 ورود به مدیریت
+</button>
                     <button class="logout-btn" id="logoutBtn">🚪 خروج</button>
                     <a href="https://scratch.mit.edu" target="_blank">🚀 اسکرچ</a>
                     <a href="https://scratchjr.org" target="_blank">🌟 جونیور</a>
@@ -924,7 +927,24 @@
             </nav>
 
             <div class="content-section">
-
+    <!-- ===== مودال ورود به مدیریت ===== -->
+<div class="modal-overlay" id="adminLoginModal">
+    <div class="modal-box">
+        <button class="modal-close" id="adminLoginClose">✕</button>
+        <div class="modal-icon">🔐</div>
+        <h3>ورود به پنل مدیریت</h3>
+        <div class="modal-body">
+            <p style="margin-bottom:16px;">برای دسترسی به پنل مدیریت، رمز عبور را وارد کنید.</p>
+            <input type="password" id="adminPassword" placeholder="رمز عبور را وارد کن..." 
+                   style="width:100%; padding:12px 16px; border-radius:50px; border:2px solid #cbd5e1; font-family:inherit; font-size:1rem; text-align:center;" />
+            <div id="adminLoginError" style="color:#dc2626; margin-top:10px; display:none;">❌ رمز عبور اشتباه است!</div>
+        </div>
+        <div class="modal-actions">
+            <button class="btn-danger" id="adminLoginBtn">🔓 ورود به مدیریت</button>
+            <button class="btn-cancel" id="adminLoginCancel">انصراف</button>
+        </div>
+    </div>
+</div>
                 <!-- ===== صفحه دوره‌ها (خانه) ===== -->
                 <div class="page active" id="page-courses">
                     <h2><span>📚</span> دوره‌های آموزشی</h2>
@@ -1797,6 +1817,124 @@
                 card.addEventListener('click', handleInfoClick);
                 card.style.cursor = 'pointer';
             });
+            document.getElementById('adminAccessBtn')?.addEventListener('click', function() {
+    if (isAdmin) {
+        showPage('admin');
+    } else {
+        openAdminLoginModal();
+    }
+});
+            // ============================================================
+// قفل مدیریت با رمز عبور
+// ============================================================
+
+const ADMIN_PASSWORD = 'admin123'; // رمز عبور را می‌توانید تغییر دهید
+let isAdmin = false;
+
+// المان‌های مودال مدیریت
+const adminLoginModal = document.getElementById('adminLoginModal');
+const adminLoginClose = document.getElementById('adminLoginClose');
+const adminLoginBtn = document.getElementById('adminLoginBtn');
+const adminLoginCancel = document.getElementById('adminLoginCancel');
+const adminPassword = document.getElementById('adminPassword');
+const adminLoginError = document.getElementById('adminLoginError');
+
+// بررسی وضعیت مدیریت (در localStorage ذخیره می‌شود)
+function checkAdminStatus() {
+    try {
+        const data = localStorage.getItem('amoozeshYarIsAdmin');
+        isAdmin = data === 'true';
+        updateAdminButton();
+    } catch {
+        isAdmin = false;
+    }
+}
+
+// ذخیره وضعیت مدیریت
+function setAdminStatus(status) {
+    isAdmin = status;
+    localStorage.setItem('amoozeshYarIsAdmin', String(status));
+    updateAdminButton();
+}
+
+// به‌روزرسانی دکمه‌ی مدیریت
+function updateAdminButton() {
+    const adminBtn = document.querySelector('.nav-btn[data-page="admin"]');
+    if (adminBtn) {
+        adminBtn.style.display = isAdmin ? 'flex' : 'none';
+    }
+}
+
+// نمایش مودال ورود به مدیریت
+function openAdminLoginModal() {
+    adminLoginModal.classList.add('show');
+    adminPassword.value = '';
+    adminLoginError.style.display = 'none';
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => adminPassword.focus(), 200);
+}
+
+function closeAdminLoginModal() {
+    adminLoginModal.classList.remove('show');
+    document.body.style.overflow = '';
+}
+
+// رویدادهای مودال
+adminLoginClose.addEventListener('click', closeAdminLoginModal);
+adminLoginCancel.addEventListener('click', closeAdminLoginModal);
+
+adminLoginModal.addEventListener('click', function(e) {
+    if (e.target === this) closeAdminLoginModal();
+});
+
+adminLoginBtn.addEventListener('click', function() {
+    const pass = adminPassword.value.trim();
+    if (pass === ADMIN_PASSWORD) {
+        setAdminStatus(true);
+        closeAdminLoginModal();
+        alert('✅ به پنل مدیریت خوش آمدید!');
+        // نمایش صفحه‌ی مدیریت
+        showPage('admin');
+    } else {
+        adminLoginError.style.display = 'block';
+        adminPassword.value = '';
+        adminPassword.focus();
+    }
+});
+
+adminPassword.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        adminLoginBtn.click();
+    }
+});
+
+// خروج از مدیریت (اختیاری - می‌توان یک دکمه اضافه کرد)
+function logoutAdmin() {
+    setAdminStatus(false);
+    alert('✅ از پنل مدیریت خارج شدید.');
+}
+
+// ============================================================
+// تغییر در منو برای نمایش دکمه‌ی مدیریت
+// ============================================================
+
+// در تابع checkLogin، بعد از نمایش دوره‌ها، این خط را اضافه کنید:
+function checkLogin() {
+    const user = getCurrentUser();
+    if (user) {
+        // ... کدهای قبلی ...
+        
+        // ===== اضافه کردن این خط =====
+        checkAdminStatus(); // بررسی وضعیت مدیریت
+        
+        // ... ادامه کد ...
+    } else {
+        // ... کدهای قبلی ...
+    }
+}
+
+// و در بخش رندر منو، دکمه‌ی مدیریت را مخفی کنید:
+// (قبلاً در تابع updateAdminButton انجام شده)
 
             // ============================================================
             // راه‌اندازی
