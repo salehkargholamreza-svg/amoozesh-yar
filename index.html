@@ -327,8 +327,8 @@
         }
         .course-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
             margin: 20px 0;
         }
         .course-card {
@@ -411,10 +411,11 @@
         }
         .course-card .video-section {
             margin-top: 12px;
-            padding: 10px;
-            background: #f1f5f9;
+            padding: 12px;
+            background: #0f172a;
             border-radius: 16px;
             display: none;
+            position: relative;
         }
         .course-card .video-section.show {
             display: block;
@@ -422,21 +423,31 @@
         .course-card .video-section video {
             width: 100%;
             border-radius: 12px;
-            max-height: 200px;
+            max-height: 220px;
+            background: #000;
         }
         .course-card .video-section .video-link {
             display: block;
-            color: #3b82f6;
+            color: #60a5fa;
             text-decoration: none;
             font-weight: 600;
-            padding: 6px;
+            padding: 8px;
             text-align: center;
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 40px;
-            margin-top: 6px;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            transition: 0.2s;
         }
         .course-card .video-section .video-link:hover {
-            background: #eef2f6;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .course-card .video-section .video-label {
+            color: #94a3b8;
+            font-size: 0.7rem;
+            display: block;
+            margin-bottom: 6px;
+            text-align: center;
         }
         .dashboard-stats {
             display: grid;
@@ -971,7 +982,7 @@
                 font-size: 1.6rem;
             }
             .course-grid {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
             .dashboard-stats {
                 grid-template-columns: repeat(2, 1fr);
@@ -1495,7 +1506,7 @@
             }
 
             // ============================================================
-            // رندر دوره‌ها (فقط ترم‌های پایین‌تر باز)
+            // رندر دوره‌ها با نمایش ویدیو
             // ============================================================
 
             function renderCourses(id, courses, userAge) {
@@ -1505,8 +1516,6 @@
 
                 let html = '';
                 courses.forEach((c, index) => {
-                    // بررسی: اگر سن کاربر از حداکثر سن ترم بیشتر باشد => باز است
-                    // اگر سن کاربر کمتر از حداقل سن ترم باشد => قفل است (ترم بالاتر)
                     const isLocked = userAge < c.minAge;
                     const lc = getLevelColor(c.level);
                     const ltc = getLevelTextColor(c.level);
@@ -1529,8 +1538,9 @@
                             </button>
                             <div class="video-section ${courseVideo ? 'show' : ''}">
                                 ${courseVideo ? `
-                                    <video controls src="${courseVideo.videoUrl}" style="width:100%;border-radius:12px;max-height:200px;"></video>
-                                    <a href="${courseVideo.videoUrl}" target="_blank" class="video-link">🎬 مشاهده ویدیو</a>
+                                    <span class="video-label">🎬 ویدیو آموزشی</span>
+                                    <video controls src="${courseVideo.videoUrl}" preload="metadata"></video>
+                                    <a href="${courseVideo.videoUrl}" target="_blank" class="video-link">📺 مشاهده در صفحه جداگانه</a>
                                 ` : ''}
                             </div>
                         </div>
@@ -2012,7 +2022,6 @@
                     renderDashboard(user);
                     const age = parseInt(user.age, 10);
 
-                    // همه دوره‌ها با محدودیت ترم‌های پایین‌تر
                     renderCourses('courseGrid', [
                         ...COURSES_DATA.junior, ...COURSES_DATA.scratch,
                         ...COURSES_DATA.python, ...COURSES_DATA.web
@@ -2026,7 +2035,6 @@
                     renderAdmin();
                     updateCount();
 
-                    // همه دکمه‌ها نمایش داده شوند
                     document.querySelectorAll('.nav-btn').forEach(b => {
                         b.style.display = 'flex';
                     });
@@ -2279,7 +2287,7 @@
 
             mainSite.classList.remove('active');
             checkLogin();
-            console.log('✅ آموزش‌یار پرو با محدودیت ترم‌های پایین‌تر بارگذاری شد!');
+            console.log('✅ آموزش‌یار پرو با نمایش ویدیو بارگذاری شد!');
             console.log('👥 کاربران:', getUsers().length);
             console.log('🔑 رمز مدیریت: admin123');
             console.log('📤 پروژه‌ها:', getProjects().length);
