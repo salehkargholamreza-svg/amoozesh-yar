@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>آموزش‌یار</title>
+    <title>آموزش‌یار | کامل + مدیریت</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
+        /* ===== همه استایل‌های قبلی ===== */
         * {
             margin: 0;
             padding: 0;
@@ -222,6 +223,26 @@
             font-weight: 600;
             color: #1e293b;
         }
+        .header-actions .live-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #22c55e;
+            margin-left: 4px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
+        }
         .btn-logout {
             background: #ef4444;
             color: white;
@@ -263,13 +284,13 @@
         }
         .nav-btn {
             flex: 1 1 auto;
-            min-width: 75px;
-            padding: 10px 14px;
+            min-width: 70px;
+            padding: 10px 12px;
             border: none;
             border-radius: 50px;
             background: transparent;
             font-family: 'Vazirmatn', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: #334155;
             cursor: pointer;
@@ -325,6 +346,268 @@
             color: #64748b;
             margin-top: 4px;
         }
+
+        /* ===== دوره‌ها ===== */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .course-card {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+            position: relative;
+        }
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+        }
+        .course-card .icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .course-card .title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #0f172a;
+        }
+        .course-card .desc {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin: 4px 0 10px;
+        }
+        .course-card .level {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 12px;
+            border-radius: 40px;
+            display: inline-block;
+        }
+        .course-card .lock {
+            position: absolute;
+            top: 12px;
+            left: 16px;
+            font-size: 1.3rem;
+        }
+        .course-card .progress {
+            margin-top: 10px;
+            background: #f1f5f9;
+            border-radius: 40px;
+            height: 5px;
+            overflow: hidden;
+        }
+        .course-card .progress .bar {
+            height: 100%;
+            background: #3b82f6;
+            border-radius: 40px;
+            transition: 0.3s;
+        }
+        .course-card .btn-start {
+            margin-top: 12px;
+            padding: 8px;
+            border: none;
+            border-radius: 40px;
+            background: #22c55e;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+        }
+        .course-card .btn-start:hover {
+            background: #16a34a;
+        }
+        .course-card .btn-start:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+        .course-card .video-section {
+            margin-top: 12px;
+            padding: 12px;
+            background: #0f172a;
+            border-radius: 16px;
+            display: none;
+        }
+        .course-card .video-section.show {
+            display: block;
+        }
+        .course-card .video-section video {
+            width: 100%;
+            border-radius: 12px;
+            max-height: 200px;
+            background: #000;
+        }
+        .course-card .video-section .video-link {
+            display: block;
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 6px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            margin-top: 6px;
+            font-size: 0.8rem;
+        }
+        .course-card .video-section .video-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ===== ریاضی ===== */
+        .math-game {
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            margin: 12px 0;
+            border: 1px solid #e2e8f0;
+        }
+        .math-game h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .math-game .question {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: #f8fafc;
+            padding: 14px 24px;
+            border-radius: 60px;
+            display: inline-block;
+            margin: 4px 0 14px;
+        }
+        .math-game .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+        .math-game input {
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 1.1rem;
+            padding: 10px 18px;
+            border-radius: 50px;
+            border: 2px solid #cbd5e1;
+            width: 140px;
+            text-align: center;
+            background: white;
+        }
+        .math-game input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        .math-game button {
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 50px;
+            background: #3b82f6;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .math-game button:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+        .math-game .result {
+            margin-top: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 40px;
+            display: inline-block;
+            background: white;
+            border: 1px solid #e2e8f0;
+        }
+        .math-game .result.correct {
+            background: #dcfce7;
+            border-color: #4ade80;
+            color: #166534;
+        }
+        .math-game .result.wrong {
+            background: #fee2e2;
+            border-color: #f87171;
+            color: #991b1b;
+        }
+
+        /* ===== جدول ضرب ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 16px;
+            margin: 12px 0;
+        }
+        .zarb-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+        .zarb-table th,
+        .zarb-table td {
+            padding: 8px 4px;
+            border: 1px solid #e2e8f0;
+            min-width: 35px;
+        }
+        .zarb-table th {
+            background: #3b82f6;
+            color: white;
+            font-weight: 700;
+        }
+        .zarb-table td {
+            background: #fafcff;
+        }
+        .zarb-table tr:nth-child(even) td {
+            background: #f8fafc;
+        }
+        .zarb-table td:first-child,
+        .zarb-table th:first-child {
+            background: #eef2f6;
+            color: #0f172a;
+            font-weight: 700;
+        }
+        .zarb-table th:first-child {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* ===== دفترچه ===== */
+        .notebook-entry {
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            margin: 16px 0;
+            border: 1px solid #e2e8f0;
+        }
+        .notebook-entry .content {
+            font-size: 1rem;
+            line-height: 2;
+            padding: 12px;
+            border-radius: 16px;
+            background: #fafcff;
+            border: 1px dashed #cbd5e1;
+            min-height: 100px;
+        }
+        .notebook-entry .meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 12px;
+        }
+
+        /* ===== مدیریت ===== */
         .admin-panel {
             background: white;
             border-radius: 24px;
@@ -439,6 +722,7 @@
             width: 220px;
             font-size: 0.85rem;
         }
+
         .project-form {
             background: white;
             border-radius: 24px;
@@ -450,9 +734,6 @@
             font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
         .project-form label {
             display: block;
@@ -496,7 +777,6 @@
         }
         .project-form .btn-submit:hover {
             background: #16a34a;
-            transform: translateY(-2px);
         }
         .project-form .file-input-wrapper {
             display: flex;
@@ -524,13 +804,7 @@
         .project-form .file-input-wrapper input[type="file"]::-webkit-file-upload-button:hover {
             background: #2563eb;
         }
-        .project-list {
-            background: white;
-            border-radius: 24px;
-            padding: 24px;
-            margin: 16px 0;
-            border: 1px solid #e2e8f0;
-        }
+
         .project-list .project-item {
             padding: 12px;
             border-bottom: 1px solid #e2e8f0;
@@ -571,6 +845,57 @@
             background: #fee2e2;
             color: #991b1b;
         }
+
+        .video-upload {
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            margin: 16px 0;
+            border: 1px solid #e2e8f0;
+        }
+        .video-upload h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .video-upload label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 4px;
+            margin-top: 12px;
+        }
+        .video-upload input,
+        .video-upload select {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 40px;
+            border: 2px solid #cbd5e1;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 0.95rem;
+            background: #f8fafc;
+        }
+        .video-upload input:focus,
+        .video-upload select:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        .video-upload .btn-upload {
+            margin-top: 12px;
+            padding: 10px 32px;
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .video-upload .btn-upload:hover {
+            background: #7c3aed;
+            transform: translateY(-2px);
+        }
+
         .main-footer {
             margin-top: 28px;
             text-align: center;
@@ -591,26 +916,7 @@
         .main-footer a:hover {
             text-decoration: underline;
         }
-        .live-indicator {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #22c55e;
-            margin-left: 6px;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.5;
-                transform: scale(0.8);
-            }
-        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 16px 12px;
@@ -636,13 +942,16 @@
             .nav-btn {
                 min-width: 50px;
                 padding: 8px 6px;
-                font-size: 0.7rem;
+                font-size: 0.65rem;
             }
             .main-content {
                 padding: 14px 12px;
             }
             .page-header h2 {
                 font-size: 1.4rem;
+            }
+            .course-grid {
+                grid-template-columns: 1fr;
             }
             .admin-panel table {
                 font-size: 0.7rem;
@@ -662,7 +971,7 @@
         @media (max-width: 480px) {
             .nav-btn {
                 min-width: 40px;
-                font-size: 0.6rem;
+                font-size: 0.55rem;
                 padding: 6px 3px;
             }
             .logo-text h1 {
@@ -678,21 +987,8 @@
             }
             .btn-header,
             .btn-logout {
-                font-size: 0.65rem;
-                padding: 4px 10px;
-            }
-            .project-form .file-input-wrapper {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .project-list .project-item {
-                flex-direction: column;
-                align-items: stretch;
-                text-align: center;
-            }
-            .admin-stats {
-                flex-direction: column;
-                align-items: center;
+                font-size: 0.6rem;
+                padding: 4px 8px;
             }
         }
     </style>
@@ -734,8 +1030,8 @@
             <div class="logo-area">
                 <div class="logo-icon">🧠</div>
                 <div class="logo-text">
-                    <h1>آموزش‌یار <span style="font-size:0.6rem;background:#f59e0b;color:white;padding:2px 8px;border-radius:40px;-webkit-text-fill-color:white;">مدیر</span></h1>
-                    <span>مدیریت لحظه‌ای کاربران و پروژه‌ها</span>
+                    <h1>آموزش‌یار <span style="font-size:0.6rem;background:#f59e0b;color:white;padding:2px 8px;border-radius:40px;-webkit-text-fill-color:white;">پرو</span></h1>
+                    <span>یادگیری هوشمند با ۲۰+ دوره</span>
                 </div>
             </div>
             <div class="header-actions">
@@ -750,13 +1046,21 @@
 
         <nav class="main-nav" id="navMenu">
             <button class="nav-btn active" data-page="dashboard">📊 داشبورد</button>
+            <button class="nav-btn" data-page="courses">📚 دوره‌ها</button>
+            <button class="nav-btn" data-page="scratch">🟦 اسکرچ</button>
+            <button class="nav-btn" data-page="junior">🧩 جونیور</button>
+            <button class="nav-btn" data-page="python">🐍 پایتون</button>
+            <button class="nav-btn" data-page="web">🌐 وب‌سازی</button>
+            <button class="nav-btn" data-page="math">➕ ریاضی</button>
+            <button class="nav-btn" data-page="zarb">✖️ جدول ضرب</button>
+            <button class="nav-btn" data-page="notebook">📓 دفترچه</button>
+            <button class="nav-btn" data-page="project">📤 ارسال پروژه</button>
             <button class="nav-btn" data-page="admin">⚙️ مدیریت</button>
-            <button class="nav-btn" data-page="project">📤 پروژه‌ها</button>
         </nav>
 
         <main class="main-content">
 
-            <!-- داشبورد -->
+            <!-- ===== داشبورد ===== -->
             <section class="page active" id="page-dashboard">
                 <div class="page-header">
                     <h2>📊 داشبورد مدیریت</h2>
@@ -765,36 +1069,186 @@
                 <div id="dashboardStats" class="admin-stats"></div>
                 <div style="margin-top:20px;background:white;border-radius:24px;padding:24px;border:1px solid #e2e8f0;">
                     <h3>📋 آخرین فعالیت‌ها</h3>
-                    <div id="recentActivity" style="margin-top:12px;font-size:0.9rem;color:#64748b;">
-                        <p>🔹 در انتظار فعالیت‌ها...</p>
+                    <div id="recentActivity" style="margin-top:12px;font-size:0.9rem;color:#64748b;"></div>
+                </div>
+            </section>
+
+            <!-- ===== دوره‌ها ===== -->
+            <section class="page" id="page-courses">
+                <div class="page-header">
+                    <h2>📚 همه دوره‌ها</h2>
+                    <p>۲۰+ دوره آموزشی برای تمام سطوح</p>
+                </div>
+                <div class="course-grid" id="courseGrid"></div>
+            </section>
+
+            <!-- ===== اسکرچ ===== -->
+            <section class="page" id="page-scratch">
+                <div class="page-header">
+                    <h2>🟦 آموزش اسکرچ</h2>
+                    <p>برنامه‌نویسی بصری با MIT Scratch</p>
+                </div>
+                <div class="course-grid" id="scratchCourses"></div>
+            </section>
+
+            <!-- ===== جونیور ===== -->
+            <section class="page" id="page-junior">
+                <div class="page-header">
+                    <h2>🧩 اسکرچ جونیور</h2>
+                    <p>برنامه‌نویسی برای کودکان</p>
+                </div>
+                <div class="course-grid" id="juniorCourses"></div>
+            </section>
+
+            <!-- ===== پایتون ===== -->
+            <section class="page" id="page-python">
+                <div class="page-header">
+                    <h2>🐍 آموزش پایتون</h2>
+                    <p>برنامه‌نویسی با محبوب‌ترین زبان دنیا</p>
+                </div>
+                <div class="course-grid" id="pythonCourses"></div>
+            </section>
+
+            <!-- ===== وب‌سازی ===== -->
+            <section class="page" id="page-web">
+                <div class="page-header">
+                    <h2>🌐 آموزش وب‌سازی</h2>
+                    <p>HTML، CSS و جاوااسکریپت</p>
+                </div>
+                <div class="course-grid" id="webCourses"></div>
+            </section>
+
+            <!-- ===== ریاضی ===== -->
+            <section class="page" id="page-math">
+                <div class="page-header">
+                    <h2>➕ ریاضی با بازی</h2>
+                    <p>یادگیری ریاضی به روش سرگرم‌کننده</p>
+                </div>
+                <div class="math-game">
+                    <h3>🎯 بازی جمع سریع</h3>
+                    <div class="question" id="mathQuestion">۵ + ۳ = ؟</div>
+                    <div class="input-group">
+                        <input type="number" id="mathAnswer" placeholder="جواب" />
+                        <button id="mathCheckBtn">✔️ بزن بریم</button>
+                    </div>
+                    <div id="mathResult" class="result">🤔 پاسخ خود را وارد کنید</div>
+                </div>
+                <div class="math-game">
+                    <h3>🎯 بازی ضرب</h3>
+                    <div class="question" id="zarbQuestion">۲ × ۳ = ؟</div>
+                    <div class="input-group">
+                        <input type="number" id="zarbAnswer" placeholder="جواب" />
+                        <button id="zarbCheckBtn">✔️ بزن بریم</button>
+                    </div>
+                    <div id="zarbResult" class="result">🤔 پاسخ خود را وارد کنید</div>
+                </div>
+                <div class="math-game">
+                    <h3>🧮 جدول ضرب کامل</h3>
+                    <div class="table-wrapper">
+                        <table class="zarb-table" id="zarb-table"></table>
                     </div>
                 </div>
             </section>
 
-            <!-- مدیریت -->
-            <section class="page" id="page-admin">
+            <!-- ===== جدول ضرب ===== -->
+            <section class="page" id="page-zarb">
                 <div class="page-header">
-                    <h2>⚙️ مدیریت کاربران</h2>
-                    <p>لیست تمام کاربران ثبت‌نام‌شده</p>
+                    <h2>✖️ جدول ضرب</h2>
+                    <p>جدول ضرب کامل از ۱ تا ۱۰ با بازی تعاملی</p>
                 </div>
-                <div id="adminContent"></div>
+                <div class="math-game">
+                    <h3>🎯 بازی ضرب</h3>
+                    <div class="question" id="zarbQuestion2">۲ × ۳ = ؟</div>
+                    <div class="input-group">
+                        <input type="number" id="zarbAnswer2" placeholder="جواب" />
+                        <button id="zarbCheckBtn2">✔️ بزن بریم</button>
+                    </div>
+                    <div id="zarbResult2" class="result">🤔 پاسخ خود را وارد کنید</div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="zarb-table" id="zarb-table2"></table>
+                </div>
             </section>
 
-            <!-- پروژه‌ها -->
+            <!-- ===== دفترچه ===== -->
+            <section class="page" id="page-notebook">
+                <div class="page-header">
+                    <h2>📓 دفترچه‌ی عمومی</h2>
+                    <p>یادداشت‌های تیم آموزش‌یار</p>
+                </div>
+                <div class="notebook-entry">
+                    <div class="content" id="notebookContent">
+                        <p><strong>📌 عنوان:</strong> خوش‌آمدید به دفترچه‌ی آموزش‌یار</p>
+                        <p>سلام! اینجا فضایی است برای نوشتن یادداشت‌ها، ایده‌ها و برنامه‌ریزی‌ها.</p>
+                        <p>🌟 شما می‌توانید محتوای این دفترچه را مستقیماً ویرایش کنید.</p>
+                        <p>---</p>
+                        <p><em>نوشته‌شده توسط: تیم آموزش‌یار</em></p>
+                    </div>
+                    <div class="meta">
+                        <span>📅 امروز</span>
+                        <span>👁️ قابل مشاهده برای همه</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== ارسال پروژه ===== -->
             <section class="page" id="page-project">
                 <div class="page-header">
-                    <h2>📤 مدیریت پروژه‌ها</h2>
-                    <p>پروژه‌های ارسال‌شده توسط کاربران</p>
+                    <h2>📤 ارسال پروژه به رئیسی</h2>
+                    <p>پروژه‌های خود را برای تأیید ارسال کنید</p>
                 </div>
-                <div id="projectContent"></div>
+
+                <div class="project-form">
+                    <h3>📝 فرم ارسال پروژه</h3>
+                    <form id="projectForm">
+                        <label for="projectTitle">عنوان پروژه</label>
+                        <input type="text" id="projectTitle" placeholder="عنوان پروژه..." required />
+
+                        <label for="projectCourse">دوره مربوطه</label>
+                        <select id="projectCourse" required>
+                            <option value="">انتخاب کنید...</option>
+                            <option value="scratch-junior">اسکرچ جونیور</option>
+                            <option value="scratch">اسکرچ</option>
+                            <option value="python">پایتون</option>
+                            <option value="web">وب‌سازی</option>
+                        </select>
+
+                        <label for="projectDesc">توضیحات پروژه</label>
+                        <textarea id="projectDesc" placeholder="توضیح دهید چه پروژه‌ای انجام داده‌اید..." required></textarea>
+
+                        <label for="projectFile">فایل پروژه</label>
+                        <div class="file-input-wrapper">
+                            <input type="file" id="projectFile" accept=".zip,.rar,.sb3,.py,.html,.css,.js,.pdf,.docx" />
+                            <span style="font-size:0.8rem;color:#64748b;">(فایل‌های مجاز: zip, rar, sb3, py, html, css, js, pdf, docx)</span>
+                        </div>
+
+                        <button type="submit" class="btn-submit">📤 ارسال پروژه</button>
+                    </form>
+                </div>
+
+                <div class="project-list" id="projectList">
+                    <h3>📋 لیست پروژه‌های ارسال‌شده</h3>
+                    <div id="projectItems" style="margin-top:12px;"></div>
+                </div>
+            </section>
+
+            <!-- ===== مدیریت ===== -->
+            <section class="page" id="page-admin">
+                <div class="page-header">
+                    <h2>⚙️ پنل مدیریت</h2>
+                    <p>مدیریت کاربران، پروژه‌ها و آپلود ویدیو</p>
+                </div>
+                <div id="adminContent"></div>
             </section>
 
         </main>
 
         <footer class="main-footer">
-            <span>✨ ساخته شده با ❤️ برای مدیریت هوشمند</span>
+            <span>✨ ساخته شده با ❤️ برای آموزش هوشمند</span>
             <span>
                 <a href="#" onclick="window.location.reload();">🔄 بروزرسانی</a>
+                &nbsp;•&nbsp;
+                <a href="https://github.com" target="_blank">📂 گیت‌هاب</a>
             </span>
         </footer>
 
@@ -805,6 +1259,67 @@
             'use strict';
 
             // ============================================================
+            // داده‌های دوره‌ها
+            // ============================================================
+
+            const COURSES_DATA = {
+                junior: [
+                    { id: 'j1', title: 'آشنایی با اسکرچ جونیور', desc: 'معرفی محیط و شخصیت‌ها', icon: '🐱', level: 'مبتدی',
+                        minAge: 5, maxAge: 7 },
+                    { id: 'j2', title: 'حرکت و انیمیشن', desc: 'یادگیری حرکت دادن شخصیت‌ها', icon: '🏃', level: 'مبتدی',
+                        minAge: 5, maxAge: 7 },
+                    { id: 'j3', title: 'صدا و افکت‌ها', desc: 'اضافه کردن صدا به پروژه‌ها', icon: '🔊', level: 'مبتدی',
+                        minAge: 5, maxAge: 7 },
+                    { id: 'j4', title: 'داستان‌سازی', desc: 'ساخت داستان‌های تعاملی', icon: '📖', level: 'مبتدی', minAge: 5,
+                        maxAge: 7 },
+                    { id: 'j5', title: 'پروژه نهایی جونیور', desc: 'یک بازی ساده با اسکرچ جونیور', icon: '🎮', level: 'مبتدی',
+                        minAge: 5, maxAge: 7 }
+                ],
+                scratch: [
+                    { id: 's1', title: 'مقدمات اسکرچ', desc: 'آشنایی با محیط و بلوک‌ها', icon: '🟦', level: 'متوسط',
+                        minAge: 8, maxAge: 10 },
+                    { id: 's2', title: 'حرکت و جهت‌یابی', desc: 'کنترل حرکت اسپرایت‌ها', icon: '🧭', level: 'متوسط',
+                        minAge: 8, maxAge: 10 },
+                    { id: 's3', title: 'ظاهر و لباس', desc: 'تغییر ظاهر شخصیت‌ها', icon: '🎨', level: 'متوسط', minAge: 9,
+                        maxAge: 11 },
+                    { id: 's4', title: 'صوت و موسیقی', desc: 'پخش صدا و ساخت موسیقی', icon: '🎵', level: 'متوسط', minAge: 9,
+                        maxAge: 11 },
+                    { id: 's5', title: 'شرط و حلقه', desc: 'یادگیری اگر و تکرار', icon: '🔄', level: 'متوسط', minAge: 10,
+                        maxAge: 12 },
+                    { id: 's6', title: 'متغیرها', desc: 'کار با متغیرها و امتیاز', icon: '📊', level: 'متوسط', minAge: 10,
+                        maxAge: 12 },
+                    { id: 's7', title: 'ساخت بازی کامل', desc: 'یک بازی کامل با اسکرچ', icon: '🎯', level: 'متوسط', minAge: 11,
+                        maxAge: 12 }
+                ],
+                python: [
+                    { id: 'p1', title: 'مقدمات پایتون', desc: 'نصب و اولین برنامه', icon: '🐍', level: 'پیشرفته', minAge: 13,
+                        maxAge: 15 },
+                    { id: 'p2', title: 'متغیرها و داده‌ها', desc: 'کار با اعداد و متون', icon: '📝', level: 'پیشرفته',
+                        minAge: 13, maxAge: 15 },
+                    { id: 'p3', title: 'شرط‌ها', desc: 'اگر و درغیراینصورت در پایتون', icon: '⚖️', level: 'پیشرفته',
+                        minAge: 14, maxAge: 16 },
+                    { id: 'p4', title: 'حلقه‌ها', desc: 'تکرار با for و while', icon: '🔄', level: 'پیشرفته', minAge: 14,
+                        maxAge: 16 },
+                    { id: 'p5', title: 'توابع', desc: 'ساخت توابع ساده', icon: '📦', level: 'پیشرفته', minAge: 15,
+                        maxAge: 17 },
+                    { id: 'p6', title: 'پروژه نهایی پایتون', desc: 'یک برنامه کاربردی با پایتون', icon: '🚀', level: 'پیشرفته',
+                        minAge: 15, maxAge: 17 }
+                ],
+                web: [
+                    { id: 'w1', title: 'مقدمات HTML', desc: 'ساختار صفحات وب', icon: '🌐', level: 'حرفه‌ای', minAge: 16,
+                        maxAge: 18 },
+                    { id: 'w2', title: 'CSS و استایل‌دهی', desc: 'زیبا کردن صفحات', icon: '🎨', level: 'حرفه‌ای', minAge: 16,
+                        maxAge: 18 },
+                    { id: 'w3', title: 'جاوااسکریپت مقدماتی', desc: 'تعامل با کاربر', icon: '⚡', level: 'حرفه‌ای', minAge: 17,
+                        maxAge: 18 },
+                    { id: 'w4', title: 'پروژه وب‌سایت', desc: 'ساخت یک وب‌سایت کامل', icon: '🚀', level: 'حرفه‌ای', minAge: 17,
+                        maxAge: 18 },
+                    { id: 'w5', title: 'انتشار آنلاین', desc: 'راه‌اندازی وب‌سایت روی هاست', icon: '🌍', level: 'حرفه‌ای',
+                        minAge: 18, maxAge: 18 }
+                ]
+            };
+
+            // ============================================================
             // کلیدهای ذخیره‌سازی
             // ============================================================
 
@@ -812,6 +1327,7 @@
             const CURRENT_USER_KEY = 'amoozeshYarCurrentUser';
             const ADMIN_KEY = 'amoozeshYarAdmin';
             const PROJECTS_KEY = 'amoozeshYarProjects';
+            const VIDEOS_KEY = 'amoozeshYarVideos';
 
             // ============================================================
             // توابع پایه
@@ -841,6 +1357,12 @@
 
             function saveProjects(p) { localStorage.setItem(PROJECTS_KEY, JSON.stringify(p)); }
 
+            function getVideos() {
+                try { const d = localStorage.getItem(VIDEOS_KEY); return d ? JSON.parse(d) : []; } catch { return []; }
+            }
+
+            function saveVideos(v) { localStorage.setItem(VIDEOS_KEY, JSON.stringify(v)); }
+
             function getLevel(age) {
                 const a = parseInt(age, 10);
                 if (a >= 5 && a <= 7) return 'مبتدی';
@@ -860,10 +1382,6 @@
                 return m[l] || '#0f172a';
             }
 
-            // ============================================================
-            // به‌روزرسانی
-            // ============================================================
-
             function updateCount() {
                 const u = getUsers();
                 const c = u.length;
@@ -874,7 +1392,53 @@
             }
 
             // ============================================================
-            // رندر داشبورد
+            // رندر دوره‌ها
+            // ============================================================
+
+            function renderCourses(id, courses, userAge) {
+                const container = document.getElementById(id);
+                if (!container) return;
+                const videos = getVideos();
+
+                let html = '';
+                courses.forEach(c => {
+                    const isLocked = userAge < c.minAge;
+                    const lc = getLevelColor(c.level);
+                    const ltc = getLevelTextColor(c.level);
+                    const progress = isLocked ? 0 : Math.floor(Math.random() * 80) + 20;
+                    const courseVideo = videos.find(v => v.courseId === c.id);
+
+                    html += `
+                        <div class="course-card">
+                            ${isLocked ? '<span class="lock">🔒</span>' : ''}
+                            <span class="icon">${c.icon}</span>
+                            <div class="title">${c.title}</div>
+                            <div class="desc">${c.desc}</div>
+                            <span class="level" style="background:${lc}; color:${ltc};">${c.level} (${c.minAge}-${c.maxAge} سال)</span>
+                            <div class="progress"><div class="bar" style="width:${progress}%;"></div></div>
+                            <button class="btn-start" ${isLocked ? 'disabled' : ''} data-title="${c.title}">
+                                ${isLocked ? '🔒 ترم بالاتر' : '📖 شروع یادگیری'}
+                            </button>
+                            <div class="video-section ${courseVideo ? 'show' : ''}">
+                                ${courseVideo ? `
+                                    <video controls src="${courseVideo.videoUrl}"></video>
+                                    <a href="${courseVideo.videoUrl}" target="_blank" class="video-link">📺 مشاهده</a>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+
+                container.querySelectorAll('.btn-start:not([disabled])').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        alert('🎉 دوره "' + this.dataset.title + '" شروع شد!');
+                    });
+                });
+            }
+
+            // ============================================================
+            // داشبورد مدیریت
             // ============================================================
 
             function renderDashboard() {
@@ -905,29 +1469,64 @@
                     }
 
                     let html = '';
-                    // آخرین کاربران ثبت‌نام‌شده
                     const recentUsers = users.slice(-3).reverse();
                     recentUsers.forEach(u => {
-                        html += `<p>✅ کاربر جدید: <strong>${u.name} ${u.family}</strong> (${u.age} سال) - ${new Date(u.registerDate).toLocaleString('fa-IR')}</p>`;
+                        html += `<p>✅ کاربر جدید: <strong>${u.name} ${u.family}</strong> (${u.age} سال)</p>`;
                     });
 
-                    // آخرین پروژه‌ها
                     const recentProjects = projects.slice(-3).reverse();
                     recentProjects.forEach(p => {
                         const user = users.find(u => u.id === p.userId);
                         const userName = user ? `${user.name} ${user.family}` : 'نامشخص';
-                        html += `<p>📤 پروژه جدید: <strong>${p.title}</strong> توسط ${userName} - وضعیت: ${p.status || 'در انتظار بررسی'}</p>`;
+                        html += `<p>📤 پروژه جدید: <strong>${p.title}</strong> توسط ${userName} - ${p.status || 'در انتظار'}</p>`;
                     });
 
-                    if (html === '') {
-                        html = '<p>🔹 هیچ فعالیتی ثبت نشده است.</p>';
-                    }
+                    if (html === '') html = '<p>🔹 هیچ فعالیتی ثبت نشده است.</p>';
                     activityContainer.innerHTML = html;
                 }
             }
 
             // ============================================================
-            // رندر مدیریت کاربران
+            // پروژه‌ها
+            // ============================================================
+
+            function renderProjects() {
+                const container = document.getElementById('projectItems');
+                if (!container) return;
+                const projects = getProjects();
+                const users = getUsers();
+
+                if (projects.length === 0) {
+                    container.innerHTML = '<p style="color:#94a3b8;text-align:center;padding:20px;">هنوز پروژه‌ای ارسال نشده است.</p>';
+                    return;
+                }
+
+                let html = '';
+                projects.forEach(p => {
+                    const user = users.find(u => u.id === p.userId);
+                    const userName = user ? `${user.name} ${user.family}` : 'نامشخص';
+                    const statusClass = p.status === 'تأیید شده' ? 'approved' : p.status === 'رد شده' ? 'rejected' :
+                        'pending';
+                    const statusBg = p.status === 'تأیید شده' ? '#dcfce7' : p.status === 'رد شده' ? '#fee2e2' :
+                    '#fef9c3';
+                    const statusColor = p.status === 'تأیید شده' ? '#166534' : p.status === 'رد شده' ? '#991b1b' :
+                        '#854d0e';
+                    html += `
+                        <div class="project-item">
+                            <div class="project-info">
+                                <div class="name">${p.title}</div>
+                                <div class="detail">${p.course} | ${p.desc.substring(0, 50)}${p.desc.length > 50 ? '...' : ''}</div>
+                                <div class="detail" style="font-size:0.75rem;">👤 ${userName} | 📅 ${new Date(p.date).toLocaleDateString('fa-IR')}</div>
+                            </div>
+                            <span class="project-status ${statusClass}" style="background:${statusBg};color:${statusColor};">${p.status || 'در انتظار بررسی'}</span>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            }
+
+            // ============================================================
+            // مدیریت کامل
             // ============================================================
 
             function renderAdmin() {
@@ -936,23 +1535,62 @@
 
                 if (isAdmin()) {
                     const users = getUsers();
+                    const projects = getProjects();
+                    const videos = getVideos();
+
                     let html = `
                         <div class="admin-panel">
-                            <h3>👥 لیست کاربران (${users.length} نفر)</h3>
-                            <div class="admin-search"><input type="text" id="adminSearch" placeholder="🔍 جستجوی کاربر..." /></div>
-                            <button class="clear-btn" id="clearAllBtn">🗑️ حذف همه کاربران</button>
-                            <div style="overflow-x:auto;margin-top:12px;">
-                                <table>
-                                    <thead><tr><th>#</th><th>نام</th><th>نام‌خانوادگی</th><th>سن</th><th>سطح</th><th>تاریخ ثبت‌نام</th><th>عملیات</th></tr></thead>
-                                    <tbody id="usersTable"></tbody>
-                                </table>
+                            <h3>📊 آمار کلی</h3>
+                            <div class="admin-stats">
+                                <div class="item">👥 کاربران: <strong>${users.length}</strong></div>
+                                <div class="item">📤 پروژه‌ها: <strong>${projects.length}</strong></div>
+                                <div class="item">🎬 ویدیوها: <strong>${videos.length}</strong></div>
                             </div>
-                            <button class="clear-btn" style="background:#64748b;margin-top:12px;" id="adminLogout">🚪 خروج از مدیریت</button>
+
+                            <h3 style="margin-top:20px;">🎬 آپلود ویدیو</h3>
+                            <div class="video-upload">
+                                <form id="videoUploadForm">
+                                    <label for="videoCourse">دوره</label>
+                                    <select id="videoCourse" required>
+                                        <option value="">انتخاب...</option>
+                                        ${Object.values(COURSES_DATA).flat().map(c => `<option value="${c.id}">${c.icon} ${c.title}</option>`).join('')}
+                                    </select>
+                                    <label for="videoTitle">عنوان</label>
+                                    <input type="text" id="videoTitle" placeholder="عنوان..." required />
+                                    <label for="videoUrl">لینک ویدیو</label>
+                                    <input type="url" id="videoUrl" placeholder="https://..." required />
+                                    <button type="submit" class="btn-upload">🎥 آپلود</button>
+                                </form>
+                            </div>
+
+                            <h3>🎬 ویدیوها</h3>
+                            <div style="overflow-x:auto;margin-bottom:16px;">
+                                <table><thead><tr><th>#</th><th>دوره</th><th>عنوان</th><th>لینک</th><th>عملیات</th></tr></thead>
+                                <tbody id="videosTable"></tbody></table>
+                            </div>
+
+                            <h3 style="margin-top:20px;">👥 کاربران</h3>
+                            <div class="admin-search"><input type="text" id="adminSearch" placeholder="🔍 جستجو..." /></div>
+                            <button class="clear-btn" id="clearAllBtn">🗑️ حذف همه</button>
+                            <div style="overflow-x:auto;margin-top:12px;">
+                                <table><thead><tr><th>#</th><th>نام</th><th>نام‌خانوادگی</th><th>سن</th><th>سطح</th><th>تاریخ</th><th>عملیات</th></tr></thead>
+                                <tbody id="usersTable"></tbody></table>
+                            </div>
+
+                            <h3 style="margin-top:20px;">📤 پروژه‌ها</h3>
+                            <div style="overflow-x:auto;">
+                                <table><thead><tr><th>#</th><th>کاربر</th><th>عنوان</th><th>دوره</th><th>وضعیت</th><th>عملیات</th></tr></thead>
+                                <tbody id="adminProjectsTable"></tbody></table>
+                            </div>
+
+                            <button class="clear-btn" style="background:#64748b;margin-top:12px;" id="adminLogout">🚪 خروج</button>
                         </div>
                     `;
                     container.innerHTML = html;
 
+                    renderVideosTable(videos);
                     renderUsersTable(users);
+                    renderAdminProjects(projects);
 
                     document.getElementById('adminSearch')?.addEventListener('input', function() {
                         const s = this.value.trim().toLowerCase();
@@ -969,7 +1607,7 @@
                                 renderAdmin();
                                 renderDashboard();
                                 updateCount();
-                                alert('✅ همه کاربران حذف شدند.');
+                                alert('✅ همه حذف شدند.');
                             }
                         }
                     });
@@ -978,6 +1616,43 @@
                         setAdmin(false);
                         renderAdmin();
                         renderDashboard();
+                    });
+
+                    document.getElementById('videoUploadForm')?.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        const courseId = document.getElementById('videoCourse').value;
+                        const title = document.getElementById('videoTitle').value.trim();
+                        const url = document.getElementById('videoUrl').value.trim();
+
+                        if (!courseId || !title || !url) {
+                            alert('❌ همه فیلدها را پر کنید.');
+                            return;
+                        }
+
+                        const list = getVideos();
+                        list.push({ id: Date.now(), courseId, title, videoUrl: url, date: new Date()
+                            .toISOString() });
+                        saveVideos(list);
+
+                        alert('✅ ویدیو آپلود شد!');
+                        document.getElementById('videoCourse').value = '';
+                        document.getElementById('videoTitle').value = '';
+                        document.getElementById('videoUrl').value = '';
+
+                        renderAdmin();
+                        renderDashboard();
+                        const user = getCurrentUser();
+                        if (user) {
+                            const age = parseInt(user.age, 10);
+                            renderCourses('courseGrid', [
+                                ...COURSES_DATA.junior, ...COURSES_DATA.scratch,
+                                ...COURSES_DATA.python, ...COURSES_DATA.web
+                            ], age);
+                            renderCourses('juniorCourses', COURSES_DATA.junior, age);
+                            renderCourses('scratchCourses', COURSES_DATA.scratch, age);
+                            renderCourses('pythonCourses', COURSES_DATA.python, age);
+                            renderCourses('webCourses', COURSES_DATA.web, age);
+                        }
                     });
 
                 } else {
@@ -1011,11 +1686,58 @@
                 }
             }
 
+            function renderVideosTable(videos) {
+                const body = document.getElementById('videosTable');
+                if (!body) return;
+                if (videos.length === 0) {
+                    body.innerHTML = `<tr><td colspan="5" style="padding:16px;color:#94a3b8;">هیچ ویدیویی نیست</td></tr>`;
+                    return;
+                }
+                let rows = '';
+                videos.forEach((v, i) => {
+                    const course = Object.values(COURSES_DATA).flat().find(c => c.id === v.courseId);
+                    rows += `
+                        <tr>
+                            <td>${i+1}</td>
+                            <td>${course ? course.title : v.courseId}</td>
+                            <td>${v.title}</td>
+                            <td><a href="${v.videoUrl}" target="_blank" style="color:#3b82f6;">🔗</a></td>
+                            <td><button class="delete-btn" data-video-id="${v.id}">🗑️</button></td>
+                        </tr>
+                    `;
+                });
+                body.innerHTML = rows;
+
+                body.querySelectorAll('.delete-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = parseInt(this.dataset.videoId, 10);
+                        if (confirm('حذف ویدیو؟')) {
+                            let list = getVideos();
+                            list = list.filter(v => v.id !== id);
+                            saveVideos(list);
+                            renderAdmin();
+                            const user = getCurrentUser();
+                            if (user) {
+                                const age = parseInt(user.age, 10);
+                                renderCourses('courseGrid', [
+                                    ...COURSES_DATA.junior, ...COURSES_DATA.scratch,
+                                    ...COURSES_DATA.python, ...COURSES_DATA.web
+                                ], age);
+                                renderCourses('juniorCourses', COURSES_DATA.junior, age);
+                                renderCourses('scratchCourses', COURSES_DATA.scratch, age);
+                                renderCourses('pythonCourses', COURSES_DATA.python, age);
+                                renderCourses('webCourses', COURSES_DATA.web, age);
+                            }
+                        }
+                    });
+                });
+            }
+
             function renderUsersTable(users) {
                 const body = document.getElementById('usersTable');
                 if (!body) return;
                 if (users.length === 0) {
-                    body.innerHTML = `<tr><td colspan="7" style="padding:16px;color:#94a3b8;">هیچ کاربری ثبت‌نام نکرده است.</td></tr>`;
+                    body.innerHTML = `<tr><td colspan="7" style="padding:16px;color:#94a3b8;">هیچ کاربری نیست</td></tr>`;
                     return;
                 }
                 let rows = '';
@@ -1054,67 +1776,31 @@
                 });
             }
 
-            // ============================================================
-            // رندر پروژه‌ها
-            // ============================================================
-
-            function renderProjects() {
-                const container = document.getElementById('projectContent');
-                if (!container) return;
-
-                if (!isAdmin()) {
-                    container.innerHTML = `
-                        <div class="admin-lock">
-                            <div style="font-size:4rem;">🔐</div>
-                            <h3>دسترسی محدود</h3>
-                            <p style="color:#64748b;">برای مشاهده پروژه‌ها، ابتدا وارد پنل مدیریت شوید.</p>
-                            <button onclick="document.querySelector('[data-page=\\'admin\\']').click();" style="padding:10px 24px;border:none;border-radius:40px;background:#3b82f6;color:white;font-weight:600;cursor:pointer;margin-top:12px;">ورود به مدیریت</button>
-                        </div>
-                    `;
-                    return;
-                }
-
-                const projects = getProjects();
-                const users = getUsers();
-
-                let html = `
-                    <div class="admin-panel">
-                        <h3>📤 لیست پروژه‌ها (${projects.length} مورد)</h3>
-                        <div style="overflow-x:auto;margin-top:12px;">
-                            <table>
-                                <thead><tr><th>#</th><th>کاربر</th><th>عنوان</th><th>دوره</th><th>توضیحات</th><th>فایل</th><th>وضعیت</th><th>عملیات</th></tr></thead>
-                                <tbody id="projectsTable"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                `;
-                container.innerHTML = html;
-
-                const body = document.getElementById('projectsTable');
+            function renderAdminProjects(projects) {
+                const body = document.getElementById('adminProjectsTable');
                 if (!body) return;
-
                 if (projects.length === 0) {
-                    body.innerHTML = `<tr><td colspan="8" style="padding:16px;color:#94a3b8;">هیچ پروژه‌ای ارسال نشده است.</td></tr>`;
+                    body.innerHTML = `<tr><td colspan="6" style="padding:16px;color:#94a3b8;">هیچ پروژه‌ای نیست</td></tr>`;
                     return;
                 }
-
+                const users = getUsers();
                 let rows = '';
                 projects.forEach((p, i) => {
                     const user = users.find(u => u.id === p.userId);
-                    const userName = user ? user.name + ' ' + user.family : 'نامشخص';
-                    const statusClass = p.status === 'تأیید شده' ? 'approved' : p.status === 'رد شده' ? 'rejected' :
-                        'pending';
+                    const userName = user ? `${user.name} ${user.family}` : 'نامشخص';
+                    const statusBg = p.status === 'تأیید شده' ? '#dcfce7' : p.status === 'رد شده' ? '#fee2e2' :
+                        '#fef9c3';
+                    const statusColor = p.status === 'تأیید شده' ? '#166534' : p.status === 'رد شده' ? '#991b1b' :
+                        '#854d0e';
                     rows += `
                         <tr>
                             <td>${i+1}</td>
                             <td>${userName}</td>
                             <td>${p.title}</td>
                             <td>${p.course}</td>
-                            <td style="text-align:right;max-width:150px;word-wrap:break-word;">${p.desc.substring(0, 50)}${p.desc.length > 50 ? '...' : ''}</td>
-                            <td><span style="font-size:0.75rem;color:#64748b;">${p.fileName || 'بدون فایل'}</span></td>
-                            <td><span class="project-status ${statusClass}" style="padding:2px 12px;border-radius:40px;font-size:0.7rem;font-weight:600;background:${p.status === 'تأیید شده' ? '#dcfce7' : p.status === 'رد شده' ? '#fee2e2' : '#fef9c3'};color:${p.status === 'تأیید شده' ? '#166534' : p.status === 'رد شده' ? '#991b1b' : '#854d0e'};">${p.status || 'در انتظار بررسی'}</span></td>
+                            <td><span style="padding:2px 12px;border-radius:40px;font-size:0.7rem;font-weight:600;background:${statusBg};color:${statusColor};">${p.status || 'در انتظار'}</span></td>
                             <td>
-                                <button class="delete-btn" data-project-id="${p.id}" style="background:#ef4444;color:white;border:none;padding:4px 12px;border-radius:40px;cursor:pointer;font-size:0.7rem;">🗑️</button>
+                                <button class="delete-btn" data-project-id="${p.id}">🗑️</button>
                                 <button class="approve-btn" data-project-id="${p.id}" style="background:#22c55e;color:white;border:none;padding:4px 12px;border-radius:40px;cursor:pointer;font-size:0.7rem;">✅</button>
                                 <button class="reject-btn" data-project-id="${p.id}" style="background:#f59e0b;color:white;border:none;padding:4px 12px;border-radius:40px;cursor:pointer;font-size:0.7rem;">❌</button>
                             </td>
@@ -1130,6 +1816,7 @@
                             let list = getProjects();
                             list = list.filter(p => p.id !== id);
                             saveProjects(list);
+                            renderAdmin();
                             renderProjects();
                             renderDashboard();
                         }
@@ -1140,14 +1827,13 @@
                     btn.addEventListener('click', function() {
                         const id = parseInt(this.dataset.projectId, 10);
                         let list = getProjects();
-                        const project = list.find(p => p.id === id);
-                        if (project) {
-                            project.status = 'تأیید شده';
+                        const p = list.find(proj => proj.id === id);
+                        if (p) { p.status = 'تأیید شده';
                             saveProjects(list);
+                            renderAdmin();
                             renderProjects();
                             renderDashboard();
-                            alert('✅ پروژه تأیید شد!');
-                        }
+                            alert('✅ تأیید شد!'); }
                     });
                 });
 
@@ -1155,14 +1841,13 @@
                     btn.addEventListener('click', function() {
                         const id = parseInt(this.dataset.projectId, 10);
                         let list = getProjects();
-                        const project = list.find(p => p.id === id);
-                        if (project) {
-                            project.status = 'رد شده';
+                        const p = list.find(proj => proj.id === id);
+                        if (p) { p.status = 'رد شده';
                             saveProjects(list);
+                            renderAdmin();
                             renderProjects();
                             renderDashboard();
-                            alert('❌ پروژه رد شد.');
-                        }
+                            alert('❌ رد شد!'); }
                     });
                 });
             }
@@ -1200,11 +1885,19 @@
                     renderDashboard();
                     renderAdmin();
                     renderProjects();
-                    updateCount();
 
-                    document.querySelectorAll('.nav-btn').forEach(b => {
-                        b.style.display = 'flex';
-                    });
+                    const age = parseInt(user.age, 10);
+                    renderCourses('courseGrid', [
+                        ...COURSES_DATA.junior, ...COURSES_DATA.scratch,
+                        ...COURSES_DATA.python, ...COURSES_DATA.web
+                    ], age);
+                    renderCourses('juniorCourses', COURSES_DATA.junior, age);
+                    renderCourses('scratchCourses', COURSES_DATA.scratch, age);
+                    renderCourses('pythonCourses', COURSES_DATA.python, age);
+                    renderCourses('webCourses', COURSES_DATA.web, age);
+
+                    updateCount();
+                    document.querySelectorAll('.nav-btn').forEach(b => { b.style.display = 'flex'; });
 
                 } else {
                     registerPage.classList.remove('hidden');
@@ -1258,21 +1951,186 @@
             const navBtns = document.querySelectorAll('.nav-btn');
             const pages = {
                 dashboard: document.getElementById('page-dashboard'),
-                admin: document.getElementById('page-admin'),
-                project: document.getElementById('page-project')
+                courses: document.getElementById('page-courses'),
+                scratch: document.getElementById('page-scratch'),
+                junior: document.getElementById('page-junior'),
+                python: document.getElementById('page-python'),
+                web: document.getElementById('page-web'),
+                math: document.getElementById('page-math'),
+                zarb: document.getElementById('page-zarb'),
+                notebook: document.getElementById('page-notebook'),
+                project: document.getElementById('page-project'),
+                admin: document.getElementById('page-admin')
             };
 
             function showPage(id) {
                 Object.values(pages).forEach(el => { if (el) el.classList.remove('active'); });
                 if (pages[id]) pages[id].classList.add('active');
                 navBtns.forEach(b => { b.classList.remove('active'); if (b.dataset.page === id) b.classList.add('active'); });
+
                 if (id === 'admin') renderAdmin();
                 if (id === 'project') renderProjects();
                 if (id === 'dashboard') renderDashboard();
+
+                if (id === 'courses' || id === 'scratch' || id === 'junior' || id === 'python' || id === 'web') {
+                    const user = getCurrentUser();
+                    if (user) {
+                        const age = parseInt(user.age, 10);
+                        if (id === 'courses') renderCourses('courseGrid', [
+                            ...COURSES_DATA.junior, ...COURSES_DATA.scratch,
+                            ...COURSES_DATA.python, ...COURSES_DATA.web
+                        ], age);
+                        if (id === 'junior') renderCourses('juniorCourses', COURSES_DATA.junior, age);
+                        if (id === 'scratch') renderCourses('scratchCourses', COURSES_DATA.scratch, age);
+                        if (id === 'python') renderCourses('pythonCourses', COURSES_DATA.python, age);
+                        if (id === 'web') renderCourses('webCourses', COURSES_DATA.web, age);
+                    }
+                }
             }
 
             navBtns.forEach(b => {
                 b.addEventListener('click', function() { const id = this.dataset.page; if (id) showPage(id); });
+            });
+
+            // ============================================================
+            // جدول ضرب
+            // ============================================================
+
+            function buildTables() {
+                ['zarb-table', 'zarb-table2'].forEach(id => {
+                    const t = document.getElementById(id);
+                    if (!t) return;
+                    let html = '<thead><tr><th>×</th>';
+                    for (let i = 1; i <= 10; i++) html += `<th>${i}</th>`;
+                    html += '</tr></thead><tbody>';
+                    for (let i = 1; i <= 10; i++) {
+                        html += `<tr><th>${i}</th>`;
+                        for (let j = 1; j <= 10; j++) html += `<td>${i*j}</td>`;
+                        html += '</tr>';
+                    }
+                    html += '</tbody>';
+                    t.innerHTML = html;
+                });
+            }
+            buildTables();
+
+            // ============================================================
+            // بازی جمع
+            // ============================================================
+
+            const q1 = document.getElementById('mathQuestion');
+            const a1 = document.getElementById('mathAnswer');
+            const b1 = document.getElementById('mathCheckBtn');
+            const r1 = document.getElementById('mathResult');
+            let n1 = 0,
+                n2 = 0;
+
+            function newQ() {
+                n1 = Math.floor(Math.random() * 10) + 1;
+                n2 = Math.floor(Math.random() * 10) + 1;
+                q1.textContent = `${n1} + ${n2} = ؟`;
+                a1.value = '';
+                r1.textContent = '🤔 پاسخ خود را وارد کنید';
+                r1.className = 'result';
+                a1.focus();
+            }
+            newQ();
+
+            b1.addEventListener('click', function() {
+                const u = parseInt(a1.value.trim(), 10);
+                if (isNaN(u)) { r1.textContent = '⚠️ عدد وارد کن';
+                    r1.className = 'result wrong'; return; }
+                const c = n1 + n2;
+                if (u === c) { r1.textContent = `✅ درسته! 🎉 (${c})`;
+                    r1.className = 'result correct';
+                    setTimeout(newQ, 900); } else { r1.textContent = `❌ نه، جواب: ${c}`;
+                    r1.className = 'result wrong';
+                    a1.value = '';
+                    a1.focus(); }
+            });
+            a1.addEventListener('keydown', function(e) { if (e.key === 'Enter') b1.click(); });
+
+            // ============================================================
+            // بازی ضرب
+            // ============================================================
+
+            function setupZarb(qId, aId, bId, rId) {
+                const q = document.getElementById(qId),
+                    a = document.getElementById(aId),
+                    b = document.getElementById(bId),
+                    r = document.getElementById(rId);
+                if (!q || !a || !b || !r) return;
+                let x = 0,
+                    y = 0;
+
+                function newZ() {
+                    x = Math.floor(Math.random() * 10) + 1;
+                    y = Math.floor(Math.random() * 10) + 1;
+                    q.textContent = `${x} × ${y} = ؟`;
+                    a.value = '';
+                    r.textContent = '🤔 پاسخ خود را وارد کنید';
+                    r.className = 'result';
+                    a.focus();
+                }
+                newZ();
+
+                b.addEventListener('click', function() {
+                    const u = parseInt(a.value.trim(), 10);
+                    if (isNaN(u)) { r.textContent = '⚠️ عدد وارد کن';
+                        r.className = 'result wrong'; return; }
+                    const c = x * y;
+                    if (u === c) { r.textContent = `✅ درسته! 🎉 (${c})`;
+                        r.className = 'result correct';
+                        setTimeout(newZ, 900); } else { r.textContent = `❌ نه، جواب: ${c}`;
+                        r.className = 'result wrong';
+                        a.value = '';
+                        a.focus(); }
+                });
+                a.addEventListener('keydown', function(e) { if (e.key === 'Enter') b.click(); });
+            }
+
+            setupZarb('zarbQuestion', 'zarbAnswer', 'zarbCheckBtn', 'zarbResult');
+            setupZarb('zarbQuestion2', 'zarbAnswer2', 'zarbCheckBtn2', 'zarbResult2');
+
+            // ============================================================
+            // ارسال پروژه
+            // ============================================================
+
+            document.getElementById('projectForm')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const user = getCurrentUser();
+                if (!user) { alert('⚠️ لطفاً وارد شوید.'); return; }
+
+                const title = document.getElementById('projectTitle').value.trim();
+                const course = document.getElementById('projectCourse').value;
+                const desc = document.getElementById('projectDesc').value.trim();
+                const fileInput = document.getElementById('projectFile');
+
+                if (!title || !course || !desc) { alert('❌ همه فیلدها را پر کنید.'); return; }
+
+                const projects = getProjects();
+                projects.push({
+                    id: Date.now(),
+                    userId: user.id,
+                    title,
+                    course: document.getElementById('projectCourse').options[document.getElementById('projectCourse')
+                        .selectedIndex].text,
+                    desc,
+                    fileName: fileInput.files.length > 0 ? fileInput.files[0].name : 'بدون فایل',
+                    date: new Date().toISOString(),
+                    status: 'در انتظار بررسی'
+                });
+                saveProjects(projects);
+
+                alert('✅ پروژه ارسال شد!');
+                document.getElementById('projectTitle').value = '';
+                document.getElementById('projectCourse').value = '';
+                document.getElementById('projectDesc').value = '';
+                document.getElementById('projectFile').value = '';
+
+                renderProjects();
+                renderDashboard();
+                renderAdmin();
             });
 
             // ============================================================
@@ -1281,10 +2139,11 @@
 
             mainSite.classList.remove('active');
             checkLogin();
-            console.log('✅ آموزش‌یار مدیریت لحظه‌ای بارگذاری شد!');
+            console.log('✅ آموزش‌یار کامل با مدیریت بارگذاری شد!');
             console.log('👥 کاربران:', getUsers().length);
             console.log('🔑 رمز مدیریت: admin123');
             console.log('📤 پروژه‌ها:', getProjects().length);
+            console.log('🎬 ویدیوها:', getVideos().length);
         })();
     </script>
 
