@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>آموزش‌یار پرو | یادگیری هوشمند</title>
+    <title>آموزش‌یار | یادگیری هوشمند</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
@@ -801,32 +801,6 @@
             background: #7c3aed;
             transform: translateY(-2px);
         }
-        .video-upload .file-input-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .video-upload .file-input-wrapper input[type="file"] {
-            flex: 1;
-            padding: 10px;
-            border-radius: 40px;
-            border: 2px dashed #cbd5e1;
-            background: #f8fafc;
-            cursor: pointer;
-        }
-        .video-upload .file-input-wrapper input[type="file"]::-webkit-file-upload-button {
-            background: #8b5cf6;
-            color: white;
-            border: none;
-            padding: 6px 16px;
-            border-radius: 40px;
-            cursor: pointer;
-            font-family: 'Vazirmatn', sans-serif;
-        }
-        .video-upload .file-input-wrapper input[type="file"]::-webkit-file-upload-button:hover {
-            background: #7c3aed;
-        }
         .project-form {
             background: white;
             border-radius: 24px;
@@ -1122,7 +1096,7 @@
         <div class="register-box">
             <div class="icon">🧑‍🎓</div>
             <h2>ثبت‌نام در آموزش‌یار</h2>
-            <p class="subtitle">برای دسترسی به بیش از ۲۰ دوره آموزشی، ثبت‌نام کنید</p>
+            <p class="subtitle">برای دسترسی به دوره‌های مناسب سن خود، ثبت‌نام کنید</p>
 
             <form id="registerForm">
                 <label for="regName">نام</label>
@@ -1199,7 +1173,7 @@
             <section class="page" id="page-courses">
                 <div class="page-header">
                     <h2>📚 همه دوره‌ها</h2>
-                    <p>۲۰+ دوره آموزشی - همه دوره‌ها برای همه باز است!</p>
+                    <p>دوره‌های مناسب سن شما باز است - ترم‌های بالاتر قفل هستند</p>
                 </div>
                 <div class="course-grid" id="courseGrid"></div>
             </section>
@@ -1208,7 +1182,7 @@
             <section class="page" id="page-scratch">
                 <div class="page-header">
                     <h2>🟦 آموزش اسکرچ</h2>
-                    <p>برنامه‌نویسی بصری با MIT Scratch - برای همه سطوح</p>
+                    <p>برنامه‌نویسی بصری با MIT Scratch</p>
                 </div>
                 <div class="course-grid" id="scratchCourses"></div>
             </section>
@@ -1217,7 +1191,7 @@
             <section class="page" id="page-junior">
                 <div class="page-header">
                     <h2>🧩 اسکرچ جونیور</h2>
-                    <p>برنامه‌نویسی برای کودکان - برای همه سطوح</p>
+                    <p>برنامه‌نویسی برای کودکان</p>
                 </div>
                 <div class="course-grid" id="juniorCourses"></div>
             </section>
@@ -1226,7 +1200,7 @@
             <section class="page" id="page-python">
                 <div class="page-header">
                     <h2>🐍 آموزش پایتون</h2>
-                    <p>برنامه‌نویسی با محبوب‌ترین زبان دنیا - برای همه سطوح</p>
+                    <p>برنامه‌نویسی با محبوب‌ترین زبان دنیا</p>
                 </div>
                 <div class="course-grid" id="pythonCourses"></div>
             </section>
@@ -1235,7 +1209,7 @@
             <section class="page" id="page-web">
                 <div class="page-header">
                     <h2>🌐 آموزش وب‌سازی</h2>
-                    <p>HTML، CSS و جاوااسکریپت - برای همه سطوح</p>
+                    <p>HTML، CSS و جاوااسکریپت</p>
                 </div>
                 <div class="course-grid" id="webCourses"></div>
             </section>
@@ -1507,16 +1481,6 @@
                 return m[l] || '#0f172a';
             }
 
-            function getCourseName(courseId) {
-                const map = {
-                    'scratch-junior': 'اسکرچ جونیور',
-                    'scratch': 'اسکرچ',
-                    'python': 'پایتون',
-                    'web': 'وب‌سازی'
-                };
-                return map[courseId] || courseId;
-            }
-
             // ============================================================
             // به‌روزرسانی
             // ============================================================
@@ -1531,7 +1495,7 @@
             }
 
             // ============================================================
-            // رندر دوره‌ها (همه باز است!)
+            // رندر دوره‌ها (فقط ترم‌های پایین‌تر باز)
             // ============================================================
 
             function renderCourses(id, courses, userAge) {
@@ -1541,20 +1505,27 @@
 
                 let html = '';
                 courses.forEach((c, index) => {
+                    // بررسی: اگر سن کاربر از حداکثر سن ترم بیشتر باشد => باز است
+                    // اگر سن کاربر کمتر از حداقل سن ترم باشد => قفل است (ترم بالاتر)
+                    const isLocked = userAge < c.minAge;
                     const lc = getLevelColor(c.level);
                     const ltc = getLevelTextColor(c.level);
-                    const progress = Math.floor(Math.random() * 80) + 20;
+                    const progress = isLocked ? 0 : Math.floor(Math.random() * 80) + 20;
                     const courseVideo = videos.find(v => v.courseId === c.id);
 
                     html += `
                         <div class="course-card">
+                            ${isLocked ? '<span class="lock">🔒</span>' : ''}
                             <span class="icon">${c.icon}</span>
                             <div class="title">${c.title}</div>
                             <div class="desc">${c.desc}</div>
                             <span class="level" style="background:${lc}; color:${ltc};">${c.level} (${c.minAge}-${c.maxAge} سال)</span>
                             <div class="progress"><div class="bar" style="width:${progress}%;"></div></div>
-                            <button class="btn-start active-btn" data-course="${c.id}" data-title="${c.title}">
-                                📖 شروع یادگیری
+                            <button class="btn-start ${!isLocked ? 'active-btn' : ''}" 
+                                    data-course="${c.id}" 
+                                    data-title="${c.title}"
+                                    ${isLocked ? 'disabled' : ''}>
+                                ${isLocked ? '🔒 ترم بالاتر (نیاز به سن ' + c.minAge + ' سال)' : '📖 شروع یادگیری'}
                             </button>
                             <div class="video-section ${courseVideo ? 'show' : ''}">
                                 ${courseVideo ? `
@@ -1568,7 +1539,7 @@
                 container.innerHTML = html;
 
                 // رویداد دکمه‌های شروع
-                container.querySelectorAll('.btn-start').forEach(btn => {
+                container.querySelectorAll('.btn-start:not([disabled])').forEach(btn => {
                     btn.addEventListener('click', function() {
                         const title = this.dataset.title;
                         const user = getCurrentUser();
@@ -1737,16 +1708,10 @@
                     `;
                     container.innerHTML = html;
 
-                    // لیست ویدیوها
                     renderVideosTable(videos);
-
-                    // لیست کاربران
                     renderUsersTable(users);
-
-                    // لیست پروژه‌ها
                     renderAdminProjects(projects);
 
-                    // جستجو
                     document.getElementById('adminSearch')?.addEventListener('input', function() {
                         const s = this.value.trim().toLowerCase();
                         const filtered = users.filter(u => u.name.toLowerCase().includes(s) || u.family.toLowerCase()
@@ -1754,7 +1719,6 @@
                         renderUsersTable(filtered);
                     });
 
-                    // حذف همه
                     document.getElementById('clearAllBtn')?.addEventListener('click', function() {
                         if (confirm('⚠️ حذف همه کاربران؟')) {
                             if (confirm('❗ آخرین تأیید')) {
@@ -1767,13 +1731,11 @@
                         }
                     });
 
-                    // خروج از مدیریت
                     document.getElementById('adminLogout')?.addEventListener('click', function() {
                         setAdmin(false);
                         renderAdmin();
                     });
 
-                    // آپلود ویدیو
                     document.getElementById('videoUploadForm')?.addEventListener('submit', function(e) {
                         e.preventDefault();
                         const courseId = document.getElementById('videoCourse').value;
@@ -1808,7 +1770,6 @@
                         renderAdmin();
                         renderDashboard(getCurrentUser());
 
-                        // رفرش دوره‌ها
                         const user = getCurrentUser();
                         if (user) {
                             const age = parseInt(user.age, 10);
@@ -1884,7 +1845,6 @@
                             list = list.filter(v => v.id !== id);
                             saveVideos(list);
                             renderAdmin();
-                            // رفرش دوره‌ها
                             const user = getCurrentUser();
                             if (user) {
                                 const age = parseInt(user.age, 10);
@@ -2051,7 +2011,8 @@
                     showUser(user);
                     renderDashboard(user);
                     const age = parseInt(user.age, 10);
-                    // همه دوره‌ها برای همه باز است!
+
+                    // همه دوره‌ها با محدودیت ترم‌های پایین‌تر
                     renderCourses('courseGrid', [
                         ...COURSES_DATA.junior, ...COURSES_DATA.scratch,
                         ...COURSES_DATA.python, ...COURSES_DATA.web
@@ -2060,6 +2021,7 @@
                     renderCourses('scratchCourses', COURSES_DATA.scratch, age);
                     renderCourses('pythonCourses', COURSES_DATA.python, age);
                     renderCourses('webCourses', COURSES_DATA.web, age);
+
                     renderProjects();
                     renderAdmin();
                     updateCount();
@@ -2317,7 +2279,7 @@
 
             mainSite.classList.remove('active');
             checkLogin();
-            console.log('✅ آموزش‌یار پرو با همه امکانات بارگذاری شد!');
+            console.log('✅ آموزش‌یار پرو با محدودیت ترم‌های پایین‌تر بارگذاری شد!');
             console.log('👥 کاربران:', getUsers().length);
             console.log('🔑 رمز مدیریت: admin123');
             console.log('📤 پروژه‌ها:', getProjects().length);
